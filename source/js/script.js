@@ -52,7 +52,7 @@ headerNavItem.appendChild(headerNavLink1);
 headerNavItem.appendChild(headerNavLink2);
 
 
-// Стили для классов, атрибуты
+// Стили header классов, атрибуты
 
 header.setAttribute('class', 'header');
 headerContainer.setAttribute('class', 'header__container');
@@ -67,6 +67,32 @@ headerPopupClose.textContent = 'X';
 headerPopupClose.addEventListener('click', function() {
     headerPopup.classList.remove('header__open');
 });
+
+// let headerPopupButtons = document.querySelectorAll('.header__popup-button');
+
+//     for (let headerButton of headerPopupButtons) {
+//         headerButton.addEventListener('click', function() {
+//             for (let btn of headerPopupButtons) {
+//                 btn.classList.remove('header__popup-button--active');
+//             }
+//             headerButton.classList.add('header__popup-button--active');
+//         });
+//     }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    let headerPopupButtons = document.querySelectorAll('.header__popup-button');
+
+    for (let headerButton of headerPopupButtons) {
+        headerButton.addEventListener('click', function() {
+            for (let btn of headerPopupButtons) {
+                btn.classList.remove('header__popup-button--active');
+            }
+            headerButton.classList.add('header__popup-button--active');
+        });
+    }
+});
+
 
 headerPopupWrapperBtn.setAttribute('class', 'header__popup-wrapper-button');
 headerPopupButton1.setAttribute('type', 'button');
@@ -101,5 +127,29 @@ headerNavLink2.setAttribute('class', 'header__link');
 headerNavLink2.setAttribute('href', 'https://www.youtube.com/watch?v=_91hNV6vuBY&ab_channel=BruceSpringsteenVEVO');
 headerNavLink2.textContent = 'Другое видео';
 
+// main
+
+let main = document.createElement('main');
+let sectionInfo = document.createElement('div');
+let sectionInfoContainer = document.createElement('div');
+let sectionInfoTitle = document.createElement('h2');
+let sectionInfoContent = document.createElement('div');
 
 
+// Подключение
+
+document.body.appendChild(main);
+
+main.appendChild(sectionInfo);
+sectionInfo.appendChild(sectionInfoContainer);
+sectionInfoContainer.appendChild(sectionInfoTitle);
+sectionInfoContainer.appendChild(sectionInfoContent);
+
+
+// Стили section классов, атрибуты
+
+sectionInfo.setAttribute('class', 'section-information');
+sectionInfoContainer.setAttribute('class', 'section-information__contrainer');
+sectionInfoTitle.setAttribute('class', 'section-information__title');
+sectionInfoTitle.textContent = 'Заголовок';
+sectionInfoContent.setAttribute('class', 'section-information__content');
