@@ -32,6 +32,11 @@ let headerLinks = {
     }
 };
 
+let headerNumberLink = {
+    textLink: '+7 (812) 924-66-61',
+    urlLink: 'tel:78129246661'
+}
+
 // Переменные header
 let header = document.createElement('header');
 let headerContainer = document.createElement('div');
@@ -39,7 +44,7 @@ let headerWrapper = document.createElement('div');
 let headerButton = document.createElement('button');
 let headerNav = document.createElement('nav');
 let headerNavList = document.createElement('ul');
-let headerNavItem =document.createElement('li');
+let headerNumber = document.createElement('a');
 
 // Подключение header
 document.body.appendChild(header);
@@ -48,7 +53,9 @@ headerContainer.appendChild(headerWrapper);
 headerWrapper.appendChild(headerButton);
 headerWrapper.appendChild(headerNav);
 headerNav.appendChild(headerNavList);
-headerNavList.appendChild(headerNavItem);
+headerWrapper.appendChild(headerNumber);
+
+
 
 // Установка стилей классов, атрибутов header
 header.setAttribute('class', 'header');
@@ -62,18 +69,26 @@ headerNav.setAttribute('class', 'header__nav');
 
 headerNavList.setAttribute('class', 'header__nav-list');
 
+headerNumber.setAttribute('class', 'header__number')
+headerNumber.setAttribute('href', headerNumberLink.urlLink); 
+headerNumber.textContent = headerNumberLink.textLink; 
+
 // Создание и добавление ссылок в навигацию
 
 for (let linkItem in headerLinks) {
     let currentLink = headerLinks[linkItem];
+
+    let headerNavItem = document.createElement('li');
 
     let headerLink = document.createElement('a');
     headerLink.textContent = currentLink.linkText;
     headerLink.setAttribute('href', currentLink.linkUrl);
 
     headerNavItem.appendChild(headerLink); 
-}
+    headerNavList.appendChild(headerNavItem);
 
+    headerNavItem.setAttribute('class', 'header__nav-item');
+}
 
 // Catalog !!!
 
