@@ -38,6 +38,8 @@ let headerContainer = document.createElement('div');
 let headerWrapper = document.createElement('div');
 let headerButton = document.createElement('button');
 let headerNav = document.createElement('nav');
+let headerNavList = document.createElement('ul');
+let headerNavItem =document.createElement('li');
 
 // Подключение header
 document.body.appendChild(header);
@@ -45,6 +47,8 @@ header.appendChild(headerContainer);
 headerContainer.appendChild(headerWrapper);
 headerWrapper.appendChild(headerButton);
 headerWrapper.appendChild(headerNav);
+headerNav.appendChild(headerNavList);
+headerNavList.appendChild(headerNavItem);
 
 // Установка стилей классов, атрибутов header
 header.setAttribute('class', 'header');
@@ -56,6 +60,8 @@ headerButton.textContent = headerBtn.text;
 
 headerNav.setAttribute('class', 'header__nav');
 
+headerNavList.setAttribute('class', 'header__nav-list');
+
 // Создание и добавление ссылок в навигацию
 
 for (let linkItem in headerLinks) {
@@ -65,7 +71,7 @@ for (let linkItem in headerLinks) {
     headerLink.textContent = currentLink.linkText;
     headerLink.setAttribute('href', currentLink.linkUrl);
 
-    headerNav.appendChild(headerLink); 
+    headerNavItem.appendChild(headerLink); 
 }
 
 
