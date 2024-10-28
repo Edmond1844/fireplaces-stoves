@@ -1,77 +1,76 @@
-.header {
-    width: 100%;
+@media (min-width: @desktop-width) {
+    .header {
+        width: 100%;
 
-    position: absolute;
-    top: 31px;
-    left: 0;
+        position: absolute;
+        top: 31px;
+        left: 0;
 
-    // background-color: @transparent;
-    background-color: #ccc;
-}
-
-.header__container {
-    .container ();
-}
-
-.header__wrapper {
-    padding: 25px 10px;
-    
-    display: flex;
-    align-items: center;
-    gap: 32px;
-}
-
-.header__button {
-    padding: 18px 66px 18px 40px;
-
-    cursor: pointer;
-
-    background-color:rgba(247, 117, 42, 1);
-    color: @white;
-
-    border-radius: 28px;
-    border: 0;
-
-    font-weight: 700;
-    font-size: 16px;
-
-    line-height: 20px;
-}
-
-// .header__nav {
-
-// }
-
-.header__nav-list {
-    .reset-styles-ol ();
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 40px;
-    row-gap: 5px;
-
-    margin-right: 66px;
-}
-
-.header__nav-item {
-    a {
-        font-size: 16px;
-        font-weight: 500;
-        
-        text-decoration: none;
-        color: @white;
+        background-color: @transparent;
     }
-}
 
-.header__number {
-    font-size: 16px;
-    font-weight: 700;
+    .header__container {
+        .container ();
+    }
 
-    line-height: 19px;
+    .header__wrapper {
+        padding: 25px 10px;
 
-    color: @brand;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
 
-    text-decoration: none;
+    .header__button {
+        padding: 18px 66px 18px 40px;
+
+        cursor: pointer;
+
+        background-color:rgba(247, 117, 42, 1);
+        color: @white;
+
+        border-radius: 28px;
+        border: 0;
+
+        font-weight: 700;
+        font-size: 16px;
+
+        line-height: 20px;
+    }
+
+    .header__nav {
+        width: 731px;
+    }
+
+    .header__nav-list {
+        .reset-styles-ol ();
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 40px;
+        row-gap: 5px;
+    }
+
+    .header__nav-item {
+        a {
+            font-size: 16px;
+            font-weight: 500;
+            
+            text-decoration: none;
+            color: @white;
+        }
+    }
+
+    .header__number {
+        font-size: 16px;
+        font-weight: 700;
+
+        line-height: 19px;
+
+        color: @brand;
+
+        text-decoration: none;
+    }
 }
