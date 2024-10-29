@@ -41,6 +41,7 @@ let headerNumberLink = {
 let header = document.createElement('header');
 let headerContainer = document.createElement('div');
 let headerWrapper = document.createElement('div');
+let headerLinksWrapper = document.createElement('div');
 let headerButton = document.createElement('button');
 let headerNav = document.createElement('nav');
 let headerNavList = document.createElement('ul');
@@ -50,10 +51,12 @@ let headerNumber = document.createElement('a');
 document.body.appendChild(header);
 header.appendChild(headerContainer);
 headerContainer.appendChild(headerWrapper);
-headerWrapper.appendChild(headerButton);
-headerWrapper.appendChild(headerNav);
+headerWrapper.appendChild(headerLinksWrapper);
+
+headerLinksWrapper.appendChild(headerButton);
+headerLinksWrapper.appendChild(headerNav);
 headerNav.appendChild(headerNavList);
-headerWrapper.appendChild(headerNumber);
+headerLinksWrapper.appendChild(headerNumber);
 
 
 
@@ -61,6 +64,8 @@ headerWrapper.appendChild(headerNumber);
 header.setAttribute('class', 'header');
 headerContainer.setAttribute('class', 'header__container');
 headerWrapper.setAttribute('class', 'header__wrapper');
+
+headerLinksWrapper.setAttribute('class', 'header__links-wrapper');
 
 headerButton.setAttribute('class', 'header__button');
 headerButton.textContent = headerBtn.text;
