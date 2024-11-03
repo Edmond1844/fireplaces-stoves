@@ -20,17 +20,31 @@ let objectNamesHeader = {
 
 // Ссылки 
 let headerLinks = {
-    link1: { linkText: 'Дымоходы', linkUrl: '#' },
-    link2: { linkText: 'Монтаж', linkUrl: '#', isImportant: true },
-    link3: { linkText: 'Портфолио', linkUrl: '#', isImportant: false },
-    link4: { linkText: 'Доставка и оплата', linkUrl: '#' },
-    link5: { linkText: 'Отзывы', linkUrl: '#' },
-    link6: { linkText: 'Контакты', linkUrl: '#' }
+    link1: { 
+        linkText: 'Дымоходы',
+        linkUrl: '#' },
+    link2: { 
+        linkText: 'Монтаж',
+        linkUrl: '#', 
+        isImportant: true },
+    link3: { 
+        linkText: 'Портфолио', 
+        linkUrl: '#', 
+        isImportant: false },
+    link4: { 
+        linkText: 'Доставка и оплата', 
+        linkUrl: '#' },
+    link5: { 
+        linkText: 'Отзывы', 
+        linkUrl: '#' },
+    link6: { 
+        linkText: 'Контакты', 
+        linkUrl: '#' }
 };
 
 // Кнопки 
 let headerButtons = {
-    btn1: { type: 'button', xlink: './img/sprite.svg#icon-basket' },
+    btn1: { type: 'button', xlink: './img/sprite.svg#icon-basket'},
     btn2: { type: 'button', xlink: '#' }, 
     btn3: { type: 'button', xlink: '#' } 
 };
@@ -158,6 +172,8 @@ console.log('привет');
 let main = document.createElement('main');
 document.body.appendChild(main);
 
+// section-intro
+
 // Объекты section-intro 
 let introText = {
     textTitle: 'Печи и камины под ключ в Санкт-Петербурге',
@@ -195,5 +211,136 @@ sectionIntroText.textContent = introText.textSubtitle;
 sectionIntroBtn.setAttribute('class', 'section-intro__btn');
 sectionIntroBtn.textContent = introText.textBtn;
 
+// section-catalog
+
+let objectCatalog = {
+    textTitle: 'Каталог',
+    textBtn: 'все товары'
+}
+
+// Переменные section-catalog 
+let sectionCatalog = document.createElement('div');
+let sectionCatalogContainer = document.createElement('div');
+let sectionCatalogWrapper = document.createElement('div');
+let sectionCatalogTitle = document.createElement('h2');
+let sectionCatalogList = document.createElement('ul');
+let sectionCatalogBtn = document.createElement('button');
+
+// Подключение section-catalog
+sectionCatalog.appendChild(sectionCatalogContainer);
+sectionCatalogContainer.appendChild(sectionCatalogWrapper);
+sectionCatalogWrapper.appendChild(sectionCatalogTitle);
+sectionCatalogWrapper.appendChild(sectionCatalogList);
+sectionCatalogWrapper.appendChild(sectionCatalogBtn);
+
+
+// Стили классов, атрибуты section-catalog
+sectionCatalog.setAttribute('class', 'section-catalog');
+sectionCatalogContainer.setAttribute('class', 'section-catalog__container');
+
+sectionCatalogWrapper.setAttribute('class', 'section-catalog__wrapper');
+
+sectionCatalogTitle.setAttribute('class', 'section-catalog__title');
+sectionCatalogTitle.textContent = objectCatalog.textTitle;
+
+sectionCatalogList.setAttribute('class', 'section-catalog__list');
+
+sectionCatalogBtn.setAttribute('class', 'section-catalog__button');
+sectionCatalogBtn.textContent = objectCatalog.textBtn;
+
+
+// Объекты section-intro 
+let sectionCatalogLinks = {
+    link1: {
+        textLink: 'Печи-камины',
+        urlLink: '#',
+        linkImg: './img/catalog/stoves-fireplaces.png',
+        width: '302',
+        height: '286'
+    },
+    link2: {
+        textLink: 'Печи',
+        urlLink: '#',
+        linkImg: './img/catalog/ovens.png',
+        width: '302',
+        height: '286'
+    },
+    link3: {
+        textLink: 'Банные печи',
+        urlLink: '#',
+        linkImg: './img/catalog/sauna-stoves.png',
+        width: '302',
+        height: '286'
+    },
+    link4: {
+        textLink: 'Камины',
+        urlLink: '#',
+        linkImg: './img/catalog/fireplaces.png',
+        width: '302',
+        height: '286'
+    },
+    link5: {
+        textLink: 'Котлы',
+        urlLink: '#',
+        linkImg: './img/catalog/boilers.png',
+        width: '237',
+        height: '221'
+    },
+    link6:{
+        textLink: 'Дымоходы',
+        urlLink: '#',
+        linkImg: './img/catalog/chimneys.png',
+        width: '237',
+        height: '221'
+    },
+    link7:{
+        textLink: 'Топки',
+        urlLink: '#',
+        linkImg: './img/catalog/fireboxes.png',
+        width: '237',
+        height: '221'
+    },
+    link8:{
+        textLink: 'Барбекю',
+        urlLink: '#',
+        linkImg: './img/catalog/b-b-q.png',
+        width: '237',
+        height: '221'
+    },
+    link9:{
+        textLink: 'Монтаж',
+        urlLink: '#',
+        linkImg: './img/catalog/installation.png',
+        width: '237',
+        height: '221'
+    },
+
+}
+
+// Создание и добавление ссылок в section-catalog
+for (let catalogLinkItem in sectionCatalogLinks) {
+    let currentLinkCatalog = sectionCatalogLinks[catalogLinkItem];
+
+    let sectionCatalogItem = document.createElement('li');
+    let sectionCatalogLink = document.createElement('a');
+    
+    sectionCatalogLink.textContent = currentLinkCatalog.textLink;
+    sectionCatalogLink.setAttribute('href', currentLinkCatalog.urlLink); 
+    sectionCatalogLink.setAttribute('class', 'section-catalog__link'); 
+
+    let linkCatalogImage = document.createElement('img');
+    linkCatalogImage.setAttribute('src', currentLinkCatalog.linkImg); 
+    linkCatalogImage.setAttribute('alt', currentLinkCatalog.textLink); 
+    linkCatalogImage.setAttribute('width', currentLinkCatalog.width);
+    linkCatalogImage.setAttribute('height', currentLinkCatalog.width);
+
+    sectionCatalogLink.appendChild(linkCatalogImage);
+
+    sectionCatalogItem.appendChild(sectionCatalogLink);
+    sectionCatalogList.appendChild(sectionCatalogItem);
+}
+
 // Подключение секций к main 
 main.appendChild(sectionIntro);
+main.appendChild(sectionCatalog);
+
