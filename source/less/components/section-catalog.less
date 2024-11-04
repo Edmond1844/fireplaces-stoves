@@ -1,81 +1,70 @@
-.section-catalog {
-    background-color: @white;
-}
-
-.section-catalog__container {
-    .container ();
-}
-
-.section-catalog__wrapper {
-    padding: 73px 10px;
-
-    background-color: @white;
-}
-
-.section-catalog__title {
-    margin: 0;
-    margin-bottom: 32px;
-
-    font-size: 40px;
-    font-weight: 700;
-
-    line-height: 48px;
-}
-
-.section-catalog__list {
-    display: flex;
-    flex-wrap: wrap;
-
-    column-gap: 17px;
-    row-gap: 32px;
-
-    .reset-styles-ol ();
-    margin-top: 0;
-    margin-bottom: 72px;
-    padding: 0;
-}
-
-// .section-catalog__item {
-// }
-
-.section-catalog__link {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-
-    text-decoration: none;
-
-    font-weight: 500px;
-    font-size: 16px;
-
-    line-height: 24px;
-
-    color: @dark;
-
-    margin-top: 4px;
-}
-
-// .section-catalog__img {
-
-// }
-
-.section-catalog__button {
-    .btn ();
-    padding: 28px 54px;
+@media (min-width: @desktop-width) {
+    .section-catalog {
+        background-color: @white;
+    }
     
-    border-radius: 38px;
-    border: 2px solid @brand;
+    .section-catalog__container {
+        .container ();
+    }
+    
+    .section-catalog__wrapper {
+        padding: 73px 10px 36px;
+    
+        background-color: @white;
+    }
+    
+    .section-catalog__title {
+        .title ();
 
-    background-color: @transparent;
-    color: @brand;
+        margin-bottom: 32px;
+    }
+    
+    .section-catalog__list {
+        display: flex;
+        flex-wrap: wrap;
+    
+        column-gap: 17px;
+        row-gap: 32px;
+    
+        .reset-styles-ol ();
+        margin-top: 0;
+        margin-bottom: 72px;
+        padding: 0;
+    }
+    
+    // .section-catalog__item {
+    // }
+    
+    .section-catalog__link {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    
+        text-decoration: none;
+    
+        font-weight: 500px;
+        font-size: 16px;
+    
+        line-height: 24px;
+    
+        color: @dark;
+    
+        margin-top: 4px;
+    }
+    
+    // .section-catalog__img {
+    
+    // }
+    
+    .section-catalog__button {
+        .btn ();
 
-    font-weight: 700;
-    font-size: 16px;
+        border-radius: 38px;
 
-    line-height: 19px;
+        padding: 28px 54px;
 
-    text-transform: uppercase;
-
-    display: block;
-    margin: 0 auto;
+        display: block;
+        
+        margin: 0 auto;
+    }
 }

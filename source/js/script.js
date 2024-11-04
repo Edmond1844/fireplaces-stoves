@@ -215,11 +215,12 @@ sectionIntroBtn.textContent = introText.textBtn;
 
 let objectCatalog = {
     textTitle: 'Каталог',
-    textBtn: 'все товары'
+    textBtn: 'все товары',
+    typeBtn: 'button'
 }
 
 // Переменные section-catalog 
-let sectionCatalog = document.createElement('div');
+let sectionCatalog = document.createElement('section');
 let sectionCatalogContainer = document.createElement('div');
 let sectionCatalogWrapper = document.createElement('div');
 let sectionCatalogTitle = document.createElement('h2');
@@ -246,6 +247,7 @@ sectionCatalogTitle.textContent = objectCatalog.textTitle;
 sectionCatalogList.setAttribute('class', 'section-catalog__list');
 
 sectionCatalogBtn.setAttribute('class', 'section-catalog__button');
+sectionCatalogBtn.setAttribute('type', objectCatalog.typeBtn);
 sectionCatalogBtn.textContent = objectCatalog.textBtn;
 
 
@@ -332,7 +334,7 @@ for (let catalogLinkItem in sectionCatalogLinks) {
     linkCatalogImage.setAttribute('src', currentLinkCatalog.linkImg); 
     linkCatalogImage.setAttribute('alt', currentLinkCatalog.textLink); 
     linkCatalogImage.setAttribute('width', currentLinkCatalog.width);
-    linkCatalogImage.setAttribute('height', currentLinkCatalog.width);
+    linkCatalogImage.setAttribute('height', currentLinkCatalog.height);
 
     sectionCatalogLink.appendChild(linkCatalogImage);
 
@@ -340,7 +342,195 @@ for (let catalogLinkItem in sectionCatalogLinks) {
     sectionCatalogList.appendChild(sectionCatalogItem);
 }
 
+// section-production
+
+// Объекты section-production
+let objectProduction = {
+    textTitle: 'Производители',
+    textButton: 'Все производители',
+    typeBtn: 'button'
+}
+
+let objectProductionLinks = {
+    link1: {
+        urlLink: '#',
+        linkImg: './img/production/dimplex.png',
+        width: '156',
+        height: '133'
+    },
+    link2: {
+        urlLink: '#',
+        linkImg: './img/production/chazelles.png',
+        width: '156',
+        height: '133'
+    },
+    link3: {
+        urlLink: '#',
+        linkImg: './img/production/abx.png',
+        width: '194',
+        height: '133'
+    },
+    link4: {
+        urlLink: '#',
+        linkImg: './img/production/bella.png',
+        width: '193',
+        height: '133'
+    },
+    link5: {
+        urlLink: '#',
+        linkImg: './img/production/dimplex.png',
+        width: '136',
+        height: '133'
+    },
+    link6: {
+        urlLink: '#',
+        linkImg: './img/production/abx.png',
+        width: '194',
+        height: '133'
+    }
+}
+
+// Переменные section-production
+let sectionProduction = document.createElement('section');
+let sectionProductionContainer = document.createElement('div');
+
+let sectionProductionWrapper = document.createElement('div');
+let sectionProductionTitle = document.createElement('h2');
+
+let sectionProductionList = document.createElement('ul');
+
+let sectionProductionBtn = document.createElement('button');
+
+// Подключение к section-production
+sectionProduction.appendChild(sectionProductionContainer);
+sectionProductionContainer.appendChild(sectionProductionWrapper);
+
+sectionProductionWrapper.appendChild(sectionProductionTitle);
+sectionProductionWrapper.appendChild(sectionProductionList);
+sectionProductionWrapper.appendChild(sectionProductionBtn);
+
+// Стили классов, атрибуты section-production
+
+sectionProduction.setAttribute('class', 'section-production');
+sectionProductionContainer.setAttribute('class', 'section-production__container');
+
+sectionProductionWrapper.setAttribute('class', 'section-production__wrapper ');
+sectionProductionTitle.setAttribute('class', 'section-production__title');
+sectionProductionTitle.textContent = objectProduction.textTitle;
+
+sectionProductionBtn.setAttribute('class', 'section-production__button');
+sectionProductionBtn.textContent = objectProduction.textButton;
+sectionProductionBtn.setAttribute('type', objectProduction.typeBtn);
+
+sectionProductionList.setAttribute('class', 'section-production__list');
+
+// Создание и добавление ссылок в section-production
+for (let productionLinkItem in objectProductionLinks) {
+    let currentLinkProductio= objectProductionLinks[productionLinkItem];
+
+    let sectionProductionItem = document.createElement('li');
+    let sectionProductionLink = document.createElement('a');
+    
+    sectionProductionLink.textContent = currentLinkProductio.textLink;
+    sectionProductionLink.setAttribute('href', currentLinkProductio.urlLink); 
+    sectionProductionLink.setAttribute('class', 'section-production__link'); 
+
+    let linkProductionImage = document.createElement('img');
+    linkProductionImage.setAttribute('src', currentLinkProductio.linkImg); 
+    linkProductionImage.setAttribute('alt', currentLinkProductio.textLink); 
+    linkProductionImage.setAttribute('width', currentLinkProductio.width);
+    linkProductionImage.setAttribute('height', currentLinkProductio.height);
+
+    sectionProductionLink.appendChild(linkProductionImage);
+
+    sectionProductionItem.appendChild(sectionProductionLink);
+    sectionProductionList.appendChild(sectionProductionItem);
+}
+
+// section-goods
+
+// Объекты section-goods 
+
+let objectGoods = {
+    title: 'Популярные товары'
+}
+
+let goodsButtons = {
+    button1: {
+        textButton: 'Печи',
+        typeButton: 'button'
+    },
+    button2: {
+        textButton: 'Печи-камины',
+        typeButton: 'button'
+    },
+    button3: {
+        textButton: 'Топки',
+        typeButton: 'button'
+    },
+    button4: {
+        textButton: 'Банные печи',
+        typeButton: 'button'
+    },
+    button5: {
+        textButton: 'Электрокамины',
+        typeButton: 'button'
+    }
+}
+
+
+// Переменные section-goods 
+let sectionGoods = document.createElement('section');
+let sectionGoodsContainer = document.createElement('div');
+let sectionGoodsWrapper = document.createElement('div');
+let sectionGoodsTitle = document.createElement('h2');
+let sectionGoodsList = document.createElement('ul');
+
+// Подключение к section-goods
+sectionGoods.appendChild(sectionGoodsContainer);
+sectionGoodsContainer.appendChild(sectionGoodsWrapper);
+sectionGoodsWrapper.appendChild(sectionGoodsTitle);
+sectionGoodsWrapper.appendChild(sectionGoodsList);
+
+// Стили классов, атрибуты section-production
+sectionGoods.setAttribute('class', 'section-goods');
+sectionGoodsContainer.setAttribute('class', 'section-goods__container');
+
+sectionGoodsWrapper.setAttribute('class', 'section-goods__wrapper');
+
+sectionGoodsTitle.setAttribute('class', 'section-goods__title');
+sectionGoodsTitle.textContent = objectGoods.title;
+
+sectionGoodsList.setAttribute('class', 'section-goods__list');
+
+// Создание и добавление ссылок в section-production
+for (let goodsButtonItem in goodsButtons) {
+    let currentButtonGoods = goodsButtons[goodsButtonItem];
+
+    let sectionGoodsItem = document.createElement('li');
+    let sectionGoodsBtn = document.createElement('button');
+    
+    sectionGoodsBtn.textContent = currentButtonGoods.textButton;
+    sectionGoodsBtn.setAttribute('class', 'section-goods__button'); 
+    sectionGoodsBtn.setAttribute('type', currentButtonGoods.typeButton);
+    
+    sectionGoodsItem.appendChild(sectionGoodsBtn);
+    sectionGoodsList.appendChild(sectionGoodsItem);
+
+    sectionGoodsBtn.addEventListener('click', function() {
+        let sectiongoodsButtons = document.querySelectorAll('.section-goods__button'); 
+        for (let btn of sectiongoodsButtons) {
+            btn.classList.remove('section-goods__button--active'); 
+        }
+        sectionGoodsBtn.classList.add('section-goods__button--active'); 
+    });
+    
+};
+
+
 // Подключение секций к main 
 main.appendChild(sectionIntro);
 main.appendChild(sectionCatalog);
+main.appendChild(sectionProduction);
+main.appendChild(sectionGoods);
 

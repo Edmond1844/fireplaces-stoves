@@ -1,0 +1,50 @@
+@media (min-width: @desktop-width) {
+    .section-goods {
+        background-color: @white;
+    }
+
+    .section-goods__container {
+        .container ();
+    }
+
+    .section-goods__wrapper {
+        padding: 36px 10px;
+    }
+
+    .section-goods__title {
+        .title ();
+        margin-bottom: 24px;
+    }
+
+    .section-goods__list {
+        .reset-styles-ol ();
+        padding: 0;
+        margin: 0;
+        margin-bottom: 24px;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        column-gap: 40px;
+        row-gap: 7px;
+    }
+
+    .section-goods__button {
+        .btn ();
+
+        text-transform: uppercase;
+
+        border-radius: 28px;
+
+        padding: 14px 24px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .section-goods__button--active {
+        color: @white;
+        background-color: @brand;
+    }
+}
