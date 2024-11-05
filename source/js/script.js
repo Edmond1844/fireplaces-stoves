@@ -485,12 +485,14 @@ let sectionGoodsContainer = document.createElement('div');
 let sectionGoodsWrapper = document.createElement('div');
 let sectionGoodsTitle = document.createElement('h2');
 let sectionGoodsList = document.createElement('ul');
+let sectionGoodsWrapperCard = document.createElement('div');
 
 // Подключение к section-goods
 sectionGoods.appendChild(sectionGoodsContainer);
 sectionGoodsContainer.appendChild(sectionGoodsWrapper);
 sectionGoodsWrapper.appendChild(sectionGoodsTitle);
 sectionGoodsWrapper.appendChild(sectionGoodsList);
+sectionGoodsWrapper.appendChild(sectionGoodsWrapperCard);
 
 // Стили классов, атрибуты section-production
 sectionGoods.setAttribute('class', 'section-goods');
@@ -502,6 +504,8 @@ sectionGoodsTitle.setAttribute('class', 'section-goods__title');
 sectionGoodsTitle.textContent = objectGoods.title;
 
 sectionGoodsList.setAttribute('class', 'section-goods__list');
+
+sectionGoodsWrapperCard.setAttribute('class', 'section-goods__wrapper-card');
 
 // Создание и добавление ссылок в section-production
 for (let goodsButtonItem in goodsButtons) {
@@ -524,9 +528,70 @@ for (let goodsButtonItem in goodsButtons) {
         }
         sectionGoodsBtn.classList.add('section-goods__button--active'); 
     });
-    
 };
 
+let objectCard = {
+    card1: {
+        imgCard: './img/goods/bake1.png',
+        alt: 'Печь',
+        width: '300',
+        height: '300',
+        nameCard: 'Печь-камин Бавария панорама пристенная',
+        price: '48 990 ₽',
+        inStock: true
+    },
+    card2: {
+        imgCard: './img/goods/bake2.png',
+        alt: 'Печь',
+        width: '300',
+        height: '300',
+        nameCard: 'Печь-камин Бавария панорама пристенная',
+        price: '48 990 ₽',
+        inStock: true
+    },
+    card3: {
+        imgCard: './img/goods/bake3.png',
+        alt: 'Печь',
+        width: '300',
+        height: '300',
+        nameCard: 'Печь-камин Jotul F3 IVE',
+        price: '209 000 ₽',
+        inStock: true
+    },
+    card4: {
+        imgCard: './img/goods/bake4.png',
+        alt: 'Печь',
+        nameCard: 'Печь-камин Jotul F 602 ECO BP',
+        price: '101 165 ₽',
+        inStock: true
+    }
+}
+
+for (let goodsCard in objectCard) {
+    let currentCard = objectCard[goodsCard];
+
+    let sectionGoodsCard = document.createElement('div');
+    let sectionGoodsCardImg = document.createElement('img');
+    let sectionGoodsCardName = document.createElement('p');
+    let sectionCatalogPrice = document.createElement('p');
+
+    sectionGoodsCardImg.setAttribute('src', currentCard.imgCard);
+    sectionGoodsCardImg.setAttribute('alt', currentCard.alt);
+
+    sectionGoodsCard.setAttribute('class', 'section-goods-card');
+
+    sectionGoodsCardName.setAttribute('class', 'section-goods__card-name');
+    sectionGoodsCardName.textContent = currentCard.nameCard;
+
+    sectionCatalogPrice.setAttribute('class', 'section-goods__card-price');
+    sectionCatalogPrice.textContent = currentCard.price;
+
+    sectionGoodsWrapperCard.appendChild(sectionGoodsCard);
+    sectionGoodsCard.appendChild(sectionGoodsCardImg);
+    sectionGoodsCard.appendChild(sectionGoodsCardName);
+    sectionGoodsCard.appendChild(sectionCatalogPrice);
+
+}
 
 // Подключение секций к main 
 main.appendChild(sectionIntro);
