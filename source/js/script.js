@@ -44,9 +44,17 @@ let headerLinks = {
 
 // Кнопки 
 let headerButtons = {
-    btn1: { type: 'button', xlink: './img/sprite.svg#icon-basket'},
-    btn2: { type: 'button', xlink: '#' }, 
-    btn3: { type: 'button', xlink: '#' } 
+    btn1: { 
+        type: 'button', 
+        xlink: './img/sprite.svg#icon-basket'
+    },
+    btn2: { 
+        type: 'button', 
+        xlink: '#' 
+    }, 
+    btn3: { 
+        type: 'button', 
+        xlink: '#' } 
 };
 
 // Переменные header
@@ -538,7 +546,8 @@ let objectCard = {
         height: '300',
         nameCard: 'Печь-камин Бавария панорама пристенная',
         price: '48 990 ₽',
-        inStock: true
+        discount: '10%',
+        inStock: false
     },
     card2: {
         imgCard: './img/goods/bake2.png',
@@ -547,7 +556,9 @@ let objectCard = {
         height: '300',
         nameCard: 'Печь-камин Бавария панорама пристенная',
         price: '48 990 ₽',
-        inStock: true
+        inStock: true,
+        svgIcon: './img/sprite.svg#icon-star'
+
     },
     card3: {
         imgCard: './img/goods/bake3.png',
@@ -556,6 +567,7 @@ let objectCard = {
         height: '300',
         nameCard: 'Печь-камин Jotul F3 IVE',
         price: '209 000 ₽',
+        priceStrikethrough: '232 440 ₽',
         inStock: true
     },
     card4: {
@@ -573,7 +585,14 @@ for (let goodsCard in objectCard) {
     let sectionGoodsCard = document.createElement('div');
     let sectionGoodsCardImg = document.createElement('img');
     let sectionGoodsCardName = document.createElement('p');
+    let sectionGoodsCardWrapperPrice = document.createElement('div');
     let sectionCatalogPrice = document.createElement('p');
+    let strikethroughPrice = document.createElement('span');
+    let strikethroughPriceDiscount = document.createElement('div');
+    let strikethroughPriceDiscountText = document.createElement('p');
+    let sectionGoodsCardWrapperIcon = document.createElement('div');
+    let sectionGoodsCardIcon = document.createElement('svg');
+    let sectionGoodsCardIconUse = document.createElement('use');
 
     sectionGoodsCardImg.setAttribute('src', currentCard.imgCard);
     sectionGoodsCardImg.setAttribute('alt', currentCard.alt);
@@ -583,14 +602,52 @@ for (let goodsCard in objectCard) {
     sectionGoodsCardName.setAttribute('class', 'section-goods__card-name');
     sectionGoodsCardName.textContent = currentCard.nameCard;
 
+    sectionGoodsCardWrapperPrice.setAttribute('class', 'section-goods__wrapper-price');
+    
     sectionCatalogPrice.setAttribute('class', 'section-goods__card-price');
     sectionCatalogPrice.textContent = currentCard.price;
+
+    strikethroughPrice.setAttribute('class', 'section-goods__card-price-strikethrough');
+    strikethroughPrice.textContent = currentCard.priceStrikethrough;
+
+    strikethroughPriceDiscount.setAttribute('class', 'section-goods__card-discount');
+    
+    strikethroughPriceDiscountText.textContent = '10%';
+
+    if (currentCard.priceStrikethrough) {
+        strikethroughPriceDiscount.setAttribute('style', 'display:block');
+        strikethroughPrice.textContent = currentCard.priceStrikethrough; 
+        sectionGoodsCardWrapperIcon.setAttribute('style', 'top: 50px');
+        sectionCatalogPrice.setAttribute('style', 'color: red')
+    } else {
+        strikethroughPriceDiscount.setAttribute('style', 'display:none');
+    };
+
+    if (currentCard.inStock === false) {
+        sectionGoodsCardName.textContent = 'Товар закончился';
+        sectionGoodsCardName.setAttribute('style', 'color: red')
+        sectionGoodsCardImg.classList.add('section-goods__img');
+        sectionCatalogPrice.setAttribute('style', 'display: none');
+        sectionGoodsCardWrapperIcon.setAttribute('style', 'display: none');
+    };
+
+    sectionGoodsCardWrapperIcon.setAttribute('class', 'section-goods__wrapper-icon');
+
+    sectionGoodsCardIconUse.setAttribute('href','./img/sprite.svg#icon-star');
+    sectionGoodsCardIconUse.setAttribute('width', '16'); 
+    sectionGoodsCardIconUse.setAttribute('height', '15'); 
 
     sectionGoodsWrapperCard.appendChild(sectionGoodsCard);
     sectionGoodsCard.appendChild(sectionGoodsCardImg);
     sectionGoodsCard.appendChild(sectionGoodsCardName);
-    sectionGoodsCard.appendChild(sectionCatalogPrice);
-
+    sectionGoodsCard.appendChild(sectionGoodsCardWrapperPrice);
+    sectionGoodsCardWrapperPrice.appendChild(sectionCatalogPrice);
+    sectionGoodsCardWrapperPrice.appendChild(strikethroughPrice);
+    sectionGoodsCard.appendChild(strikethroughPriceDiscount);
+    strikethroughPriceDiscount.appendChild(strikethroughPriceDiscountText);
+    sectionGoodsCard.appendChild(sectionGoodsCardWrapperIcon);
+    sectionGoodsCardWrapperIcon.appendChild(sectionGoodsCardIcon);
+    sectionGoodsCardIcon.appendChild(sectionGoodsCardIconUse);
 }
 
 // Подключение секций к main 
