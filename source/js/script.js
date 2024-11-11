@@ -538,6 +538,9 @@ for (let goodsButtonItem in goodsButtons) {
     });
 };
 
+
+// Объекты для карточки товаров
+
 let objectCard = {
     card1: {
         imgCard: './img/goods/bake1.png',
@@ -579,6 +582,8 @@ let objectCard = {
     }
 }
 
+// Создание карточки товаров
+
 for (let goodsCard in objectCard) {
     let currentCard = objectCard[goodsCard];
 
@@ -593,6 +598,8 @@ for (let goodsCard in objectCard) {
     let sectionGoodsCardWrapperIcon = document.createElement('div');
     let sectionGoodsCardIcon = document.createElement('svg');
     let sectionGoodsCardIconUse = document.createElement('use');
+
+// Стили классов, атрибуты для карточки товаров 
 
     sectionGoodsCardImg.setAttribute('src', currentCard.imgCard);
     sectionGoodsCardImg.setAttribute('alt', currentCard.alt);
@@ -649,6 +656,111 @@ for (let goodsCard in objectCard) {
     sectionGoodsCardWrapperIcon.appendChild(sectionGoodsCardIcon);
     sectionGoodsCardIcon.appendChild(sectionGoodsCardIconUse);
 }
+
+// Объекты для формы
+let objektForm = {
+    title: 'Консультируем и подбираем оборудование',
+    text: 'Наш специалист по товару задаст вам несколько вопросов и предложит подходящие варианты.',
+    specialistIcon: './img/goods/specialist.png'
+}
+
+// Форма консультации 
+
+let sectionGoodsInputCardContainer = document.createElement('div');
+let sectionGoodsInputCardWrapper= document.createElement('div');
+let sectionGoodsInputCardTitle = document.createElement('h2');
+let sectionGoodsSpecialistWrapper = document.createElement('div');
+let sectionGoodsSpecialistIcon = document.createElement('img');
+let sectionGoodsInputCardText = document.createElement('p');
+let sectionGoodsForm = document.createElement('form');
+let sectionGoodsFormWrapperInput = document.createElement('div');
+let sectionGoodsFormBtn = document.createElement('button');
+
+
+// Подключение формы к sectionGoods
+
+sectionGoodsContainer.appendChild(sectionGoodsInputCardContainer);
+sectionGoodsInputCardContainer.appendChild(sectionGoodsInputCardWrapper);
+sectionGoodsInputCardWrapper.appendChild(sectionGoodsInputCardTitle);
+sectionGoodsInputCardWrapper.appendChild(sectionGoodsInputCardText);
+
+sectionGoodsInputCardWrapper.appendChild(sectionGoodsSpecialistWrapper)
+sectionGoodsSpecialistWrapper.appendChild(sectionGoodsSpecialistIcon);
+sectionGoodsSpecialistWrapper.appendChild(sectionGoodsInputCardText);
+
+sectionGoodsInputCardWrapper.appendChild(sectionGoodsForm);
+sectionGoodsForm.appendChild(sectionGoodsFormWrapperInput);
+
+sectionGoodsForm.appendChild(sectionGoodsFormBtn);
+
+
+
+// Стили классов, атрибуты для формы 
+
+sectionGoodsInputCardContainer.setAttribute('class', 'section-goods__input-card input-card');
+
+sectionGoodsInputCardWrapper.setAttribute('class', 'section-goods__card-wrapper input-card__wrapper');
+
+sectionGoodsInputCardTitle.textContent = objektForm.title;
+sectionGoodsInputCardTitle.setAttribute('class', 'section-goods__card-title input-card__title');
+
+sectionGoodsSpecialistWrapper.setAttribute('class', 'section-goods__specialis-wrapper');
+
+sectionGoodsSpecialistIcon.setAttribute('src', objektForm.specialistIcon);
+
+sectionGoodsInputCardText.textContent = objektForm.text;
+sectionGoodsInputCardText.setAttribute('class', 'section-goods__card-text input-card__text');
+
+sectionGoodsForm.setAttribute('class', 'section-goods__form');
+
+sectionGoodsFormWrapperInput.setAttribute('class', 'section-goods__input-wrapper input-card__input-wrapper');
+
+sectionGoodsFormBtn.setAttribute('class', 'section-goods__input-button input-card__button ');
+sectionGoodsFormBtn.textContent = 'Получить коснультацию';
+sectionGoodsFormBtn.setAttribute('type', 'symbit');
+
+
+// Объекты INPUT 
+
+let inputObject = {
+    inputName: {
+        type: 'text',
+        placeholder: 'Ваше имя'
+    },
+    inputEmail: {
+        type: 'email',
+        placeholder: 'Ваш email',
+    }
+};
+
+for (let inputs in inputObject) {
+    let currentInput = inputObject[inputs];
+
+    let sectionGoodsInput = document.createElement('input');
+
+    sectionGoodsFormWrapperInput.appendChild(sectionGoodsInput);
+
+    sectionGoodsInput.setAttribute('class', 'section-goods__input input-card__input');
+    sectionGoodsInput.setAttribute('type', currentInput.type);
+    sectionGoodsInput.setAttribute('placeholder', currentInput.placeholder);
+
+    if (inputs === 'inputName') {
+        sectionGoodsInput.setAttribute('style', 'text-transform: capitalize');
+    }
+    if (inputs === 'inputEmail') {
+        sectionGoodsInput.addEventListener('change', function() {
+            let emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+            if (!emailPattern.test(sectionGoodsInput.value)) {
+                sectionGoodsInput.classList.add('input-card__error');
+            } else {
+                sectionGoodsInput.classList.remove('input-card__error');
+                sectionGoodsInput.classList.add('input-card__good');
+            }
+        });
+    }
+}
+
+
 
 // Подключение секций к main 
 main.appendChild(sectionIntro);
