@@ -3,12 +3,17 @@
   "private": true,
   "description": "Проект",
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
     "autoprefixer": "10.4.0",
     "browser-sync": "2.27.7",
     "gulp": "4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-less": "5.0.0",
     "gulp-plumber": "1.2.1",
     "gulp-postcss": "9.0.1",
+    "gulp-terser": "^2.1.0",
     "postcss": "8.3.11",
     "stylelint": "13.13.1"
   },

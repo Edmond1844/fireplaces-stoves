@@ -1,4 +1,3 @@
-// header !!!
 
 // Объекты header
 let objectNamesHeader = {
@@ -173,8 +172,6 @@ for (let linkItem in headerLinks) {
         headerLink.classList.add('header--red');
     }
 }
-
-console.log('привет');
 
 // main 
 let main = document.createElement('main');
@@ -548,8 +545,7 @@ let objectCard = {
         width: '300',
         height: '300',
         nameCard: 'Печь-камин Бавария панорама пристенная',
-        price: '48 990 ₽',
-        discount: '10%',
+        price:  48990,
         inStock: false
     },
     card2: {
@@ -558,7 +554,8 @@ let objectCard = {
         width: '300',
         height: '300',
         nameCard: 'Печь-камин Бавария панорама пристенная',
-        price: '48 990 ₽',
+        price: 48990, 
+        discount: 90,
         inStock: true,
         svgIcon: './img/sprite.svg#icon-star'
 
@@ -569,15 +566,15 @@ let objectCard = {
         width: '300',
         height: '300',
         nameCard: 'Печь-камин Jotul F3 IVE',
-        price: '209 000 ₽',
-        priceStrikethrough: '232 440 ₽',
+        price: 209000,
+        discount: 10,
         inStock: true
     },
     card4: {
         imgCard: './img/goods/bake4.png',
         alt: 'Печь',
         nameCard: 'Печь-камин Jotul F 602 ECO BP',
-        price: '101 165 ₽',
+        price: 101165,
         inStock: true
     }
 }
@@ -591,7 +588,7 @@ for (let goodsCard in objectCard) {
     let sectionGoodsCardImg = document.createElement('img');
     let sectionGoodsCardName = document.createElement('p');
     let sectionGoodsCardWrapperPrice = document.createElement('div');
-    let sectionCatalogPrice = document.createElement('p');
+    let sectionGoodsPrice = document.createElement('p');
     let strikethroughPrice = document.createElement('span');
     let strikethroughPriceDiscount = document.createElement('div');
     let strikethroughPriceDiscountText = document.createElement('p');
@@ -601,6 +598,8 @@ for (let goodsCard in objectCard) {
 
 // Стили классов, атрибуты для карточки товаров 
 
+if (currentCard.inStock === true) {
+        
     sectionGoodsCardImg.setAttribute('src', currentCard.imgCard);
     sectionGoodsCardImg.setAttribute('alt', currentCard.alt);
 
@@ -608,35 +607,46 @@ for (let goodsCard in objectCard) {
 
     sectionGoodsCardName.setAttribute('class', 'section-goods__card-name');
     sectionGoodsCardName.textContent = currentCard.nameCard;
-
     sectionGoodsCardWrapperPrice.setAttribute('class', 'section-goods__wrapper-price');
     
-    sectionCatalogPrice.setAttribute('class', 'section-goods__card-price');
-    sectionCatalogPrice.textContent = currentCard.price;
-
-    strikethroughPrice.setAttribute('class', 'section-goods__card-price-strikethrough');
-    strikethroughPrice.textContent = currentCard.priceStrikethrough;
-
-    strikethroughPriceDiscount.setAttribute('class', 'section-goods__card-discount');
-    
-    strikethroughPriceDiscountText.textContent = '10%';
-
-    if (currentCard.priceStrikethrough) {
-        strikethroughPriceDiscount.setAttribute('style', 'display:block');
-        strikethroughPrice.textContent = currentCard.priceStrikethrough; 
-        sectionGoodsCardWrapperIcon.setAttribute('style', 'top: 50px');
-        sectionCatalogPrice.setAttribute('style', 'color: red')
-    } else {
-        strikethroughPriceDiscount.setAttribute('style', 'display:none');
-    };
-
+    sectionGoodsPrice.setAttribute('class', 'section-goods__card-price');
+    sectionGoodsPrice.textContent = currentCard.price + ' ₽';
+}
     if (currentCard.inStock === false) {
+        sectionGoodsCardImg.setAttribute('src', currentCard.imgCard);
+        sectionGoodsCardImg.setAttribute('alt', currentCard.alt);
+    
         sectionGoodsCardName.textContent = 'Товар закончился';
         sectionGoodsCardName.setAttribute('style', 'color: red')
         sectionGoodsCardImg.classList.add('section-goods__img');
-        sectionCatalogPrice.setAttribute('style', 'display: none');
+        sectionGoodsPrice.setAttribute('style', 'display: none');
         sectionGoodsCardWrapperIcon.setAttribute('style', 'display: none');
-    };
+    }
+
+    // Расчет скидки
+    if (currentCard.discount) {
+        // Цена до скидки
+        sectionGoodsPrice.setAttribute('class', 'section-goods__card-price-strikethrough');
+
+        // Цена после скидки
+        let discountAmount = (currentCard.price / 100) * currentCard.discount;
+
+        let discountedPrice = currentCard.price - discountAmount;
+        currentCard.price = discountedPrice;
+
+        strikethroughPrice.textContent = `${currentCard.price} ₽`;
+        strikethroughPrice.setAttribute('class', 'section-goods__card-new-price');
+    } 
+
+
+    if (currentCard.discount) {
+        sectionGoodsCardWrapperIcon.setAttribute('style', 'top: 50px');
+        strikethroughPriceDiscount.setAttribute('class', 'section-goods__card-discount');
+            
+        strikethroughPriceDiscountText.textContent = currentCard.discount + ' %';
+        
+    }
+
 
     sectionGoodsCardWrapperIcon.setAttribute('class', 'section-goods__wrapper-icon');
 
@@ -648,7 +658,7 @@ for (let goodsCard in objectCard) {
     sectionGoodsCard.appendChild(sectionGoodsCardImg);
     sectionGoodsCard.appendChild(sectionGoodsCardName);
     sectionGoodsCard.appendChild(sectionGoodsCardWrapperPrice);
-    sectionGoodsCardWrapperPrice.appendChild(sectionCatalogPrice);
+    sectionGoodsCardWrapperPrice.appendChild(sectionGoodsPrice);
     sectionGoodsCardWrapperPrice.appendChild(strikethroughPrice);
     sectionGoodsCard.appendChild(strikethroughPriceDiscount);
     strikethroughPriceDiscount.appendChild(strikethroughPriceDiscountText);
@@ -759,8 +769,6 @@ for (let inputs in inputObject) {
         });
     }
 }
-
-
 
 // Подключение секций к main 
 main.appendChild(sectionIntro);
