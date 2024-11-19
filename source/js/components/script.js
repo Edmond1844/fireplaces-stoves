@@ -575,6 +575,7 @@ let objectCard = {
         alt: 'Печь',
         nameCard: 'Печь-камин Jotul F 602 ECO BP',
         price: 101165,
+        discount: 70,
         inStock: true
     }
 }
@@ -592,35 +593,51 @@ for (let goodsCard in objectCard) {
     let strikethroughPrice = document.createElement('span');
     let strikethroughPriceDiscount = document.createElement('div');
     let strikethroughPriceDiscountText = document.createElement('p');
-    let sectionGoodsCardWrapperIcon = document.createElement('div');
+
     let sectionGoodsCardIcon = document.createElement('svg');
     let sectionGoodsCardIconUse = document.createElement('use');
 
-// Стили классов, атрибуты для карточки товаров 
+    // Стили классов, атрибуты для карточки товаров 
 
-if (currentCard.inStock === true) {
+    sectionGoodsCard.setAttribute('class', 'section-goods__card');
+
+    if (currentCard.inStock === true) {
+        let sectionGoodsCardWrapperIcon = document.createElement('div');
+
+        sectionGoodsCard.appendChild(sectionGoodsCardWrapperIcon);
+        sectionGoodsCardWrapperIcon.appendChild(sectionGoodsCardIcon);
+            
+        sectionGoodsCardImg.setAttribute('src', currentCard.imgCard);
+        sectionGoodsCardImg.setAttribute('alt', currentCard.alt);
+
+        sectionGoodsCardName.setAttribute('class', 'section-goods__card-name');
+        sectionGoodsCardName.textContent = currentCard.nameCard;
+        sectionGoodsCardWrapperPrice.setAttribute('class', 'section-goods__wrapper-price');
         
-    sectionGoodsCardImg.setAttribute('src', currentCard.imgCard);
-    sectionGoodsCardImg.setAttribute('alt', currentCard.alt);
+        sectionGoodsPrice.setAttribute('class', 'section-goods__card-price');
+        sectionGoodsPrice.textContent = currentCard.price + ' ₽';
 
-    sectionGoodsCard.setAttribute('class', 'section-goods-card');
+        if (currentCard.discount) {
+            sectionGoodsCardWrapperIcon.setAttribute('style', 'top: 50px');
+            strikethroughPriceDiscount.setAttribute('class', 'section-goods__card-discount');
+                
+            strikethroughPriceDiscountText.textContent = currentCard.discount + ' %';
+        }
 
-    sectionGoodsCardName.setAttribute('class', 'section-goods__card-name');
-    sectionGoodsCardName.textContent = currentCard.nameCard;
-    sectionGoodsCardWrapperPrice.setAttribute('class', 'section-goods__wrapper-price');
-    
-    sectionGoodsPrice.setAttribute('class', 'section-goods__card-price');
-    sectionGoodsPrice.textContent = currentCard.price + ' ₽';
-}
+
+            sectionGoodsCardWrapperIcon.setAttribute('class', 'section-goods__wrapper-icon');
+        }
     if (currentCard.inStock === false) {
+        sectionGoodsCard.classList.add('section-goods__card--not-available');
+
         sectionGoodsCardImg.setAttribute('src', currentCard.imgCard);
         sectionGoodsCardImg.setAttribute('alt', currentCard.alt);
     
         sectionGoodsCardName.textContent = 'Товар закончился';
-        sectionGoodsCardName.setAttribute('style', 'color: red')
-        sectionGoodsCardImg.classList.add('section-goods__img');
         sectionGoodsPrice.setAttribute('style', 'display: none');
-        sectionGoodsCardWrapperIcon.setAttribute('style', 'display: none');
+
+        strikethroughPriceDiscount.setAttribute('style', 'display: none');
+        strikethroughPrice.setAttribute('style', 'display: none');
     }
 
     // Расчет скидки
@@ -638,18 +655,6 @@ if (currentCard.inStock === true) {
         strikethroughPrice.setAttribute('class', 'section-goods__card-new-price');
     } 
 
-
-    if (currentCard.discount) {
-        sectionGoodsCardWrapperIcon.setAttribute('style', 'top: 50px');
-        strikethroughPriceDiscount.setAttribute('class', 'section-goods__card-discount');
-            
-        strikethroughPriceDiscountText.textContent = currentCard.discount + ' %';
-        
-    }
-
-
-    sectionGoodsCardWrapperIcon.setAttribute('class', 'section-goods__wrapper-icon');
-
     sectionGoodsCardIconUse.setAttribute('href','./img/sprite.svg#icon-star');
     sectionGoodsCardIconUse.setAttribute('width', '16'); 
     sectionGoodsCardIconUse.setAttribute('height', '15'); 
@@ -662,8 +667,7 @@ if (currentCard.inStock === true) {
     sectionGoodsCardWrapperPrice.appendChild(strikethroughPrice);
     sectionGoodsCard.appendChild(strikethroughPriceDiscount);
     strikethroughPriceDiscount.appendChild(strikethroughPriceDiscountText);
-    sectionGoodsCard.appendChild(sectionGoodsCardWrapperIcon);
-    sectionGoodsCardWrapperIcon.appendChild(sectionGoodsCardIcon);
+
     sectionGoodsCardIcon.appendChild(sectionGoodsCardIconUse);
 }
 
@@ -671,7 +675,8 @@ if (currentCard.inStock === true) {
 let objektForm = {
     title: 'Консультируем и подбираем оборудование',
     text: 'Наш специалист по товару задаст вам несколько вопросов и предложит подходящие варианты.',
-    specialistIcon: './img/goods/specialist.png'
+    specialistIcon: './img/goods/specialist.png',
+    textBtn:'Получить коснультацию'
 }
 
 // Форма консультации 
@@ -726,7 +731,7 @@ sectionGoodsForm.setAttribute('class', 'section-goods__form');
 sectionGoodsFormWrapperInput.setAttribute('class', 'section-goods__input-wrapper input-card__input-wrapper');
 
 sectionGoodsFormBtn.setAttribute('class', 'section-goods__input-button input-card__button ');
-sectionGoodsFormBtn.textContent = 'Получить коснультацию';
+sectionGoodsFormBtn.textContent = objektForm.textBtn;
 sectionGoodsFormBtn.setAttribute('type', 'symbit');
 
 
@@ -745,10 +750,16 @@ let inputObject = {
 
 for (let inputs in inputObject) {
     let currentInput = inputObject[inputs];
-
+    
+    let sectionGoodsInputWrapper = document.createElement('div');
     let sectionGoodsInput = document.createElement('input');
+    let sectionGoodsValidationMessage = document.createElement('p');
 
-    sectionGoodsFormWrapperInput.appendChild(sectionGoodsInput);
+    sectionGoodsFormWrapperInput.appendChild(sectionGoodsInputWrapper);
+    sectionGoodsInputWrapper.appendChild(sectionGoodsInput);
+    sectionGoodsInputWrapper.appendChild(sectionGoodsValidationMessage);
+
+    sectionGoodsValidationMessage.setAttribute('class', 'section-goods__validation-message');
 
     sectionGoodsInput.setAttribute('class', 'section-goods__input input-card__input');
     sectionGoodsInput.setAttribute('type', currentInput.type);
@@ -761,18 +772,237 @@ for (let inputs in inputObject) {
         sectionGoodsInput.addEventListener('change', function() {
             let emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
             if (!emailPattern.test(sectionGoodsInput.value)) {
+                sectionGoodsValidationMessage.setAttribute('style', 'color: red');
+                sectionGoodsValidationMessage.textContent = 'Email введен некорректно';
                 sectionGoodsInput.classList.add('input-card__error');
             } else {
+                sectionGoodsValidationMessage.setAttribute('style', 'color: green');
+                sectionGoodsValidationMessage.textContent = 'Все супер';
                 sectionGoodsInput.classList.remove('input-card__error');
                 sectionGoodsInput.classList.add('input-card__good');
             }
         });
     }
+};
+
+// section-montage 
+
+// Переменные секции section-montage 
+let sectionMontage = document.createElement('section');
+let sectionMontageContainer = document.createElement('div');
+let sectionMontageWrapper = document.createElement('div');
+let sectionMontageTitle = document.createElement('h2');
+let sectionMontageWarrantyInfo = document.createElement('div');
+let sectionMontageIconWrapper = document.createElement('div');
+// место для use
+let sectionMontageWarrantyText = document.createElement('p');
+let sectionMontageWrapperCard = document.createElement('div');
+
+// Подключение к section-montage 
+sectionMontage.appendChild(sectionMontageContainer);
+sectionMontageContainer.appendChild(sectionMontageWrapper);
+
+sectionMontageWrapper.appendChild(sectionMontageTitle);
+
+sectionMontageWrapper.appendChild(sectionMontageWarrantyInfo);
+
+sectionMontageWarrantyInfo.appendChild(sectionMontageIconWrapper);
+sectionMontageWarrantyInfo.appendChild(sectionMontageWarrantyText);
+
+sectionMontageWrapper.appendChild(sectionMontageWrapperCard);
+
+// Стили классов, атрибуты section-montage 
+sectionMontage.setAttribute('class', 'section-montage');
+sectionMontageContainer.setAttribute('class', 'section-montage__container');
+
+sectionMontageWrapper.setAttribute('class', 'section-montage__wrapper');
+
+sectionMontageTitle.setAttribute('class', 'section-montage__title');
+sectionMontageTitle.textContent = 'Монтаж';
+
+sectionMontageWarrantyInfo.setAttribute('class', 'section-montage__warranty-info');
+
+sectionMontageIconWrapper.setAttribute('class', 'section-montage__icon-wrapper');
+//img
+sectionMontageWarrantyText.setAttribute('class', 'section-montage__warranty-text ');
+sectionMontageWarrantyText.textContent = 'Даём гарантию на выполненные работы — 5 лет и предоставляем сервисное обслуживание.';
+
+sectionMontageWrapperCard.setAttribute('class', 'section-montage__wrapper-card');
+// Объекты карточек расчета 
+
+let sectionMontageObjectCard = {
+    card1: {
+        imgCard: '../img/montage/stove-installation.jpg',
+        altText: 'Установка печи в доме',
+        // urlLink: '#qqq',
+        textLink: 'Установка печи в доме',
+        price: 20000
+    },
+    card2: {
+        imgCard: '../img/montage/fireplace-installation.jpg',
+        altText: 'Установка камина',
+        urlLink: '#',
+        textLink: 'Установка камина',
+        price: 29000
+    },
+    card3: {
+        imgCard: '../img/montage/installation-bath.jpg',
+        altText: 'Установка печи в бане',
+        urlLink: '#',
+        textLink: 'Установка печи в бане',
+        price: 25000
+    },
+    card4: {
+        imgCard: '../img/montage/installation-boiler.jpg',
+        altText: 'Установка котла',
+        urlLink: '#',
+        textLink: 'Установка котла',
+        price: 25000
+    },
+    card5: {
+        imgCard: '../img/montage/installation-chimney.jpg',
+        altText: 'Установка дымохода',
+        urlLink: '#',
+        textLink: 'Установка дымохода',
+        price: 22000
+    },
+    card6: {
+        imgCard: '../img/montage/chimney-making.jpg',
+        altText: 'Изготовление дымохода',
+        urlLink: '#',
+        textLink: 'Изготовление дымохода',
+        price: 18000,
+    }
 }
+
+for (мontageCrad in sectionMontageObjectCard) {
+    let currentCard = sectionMontageObjectCard[мontageCrad];
+
+    let sectionMontageCard = document.createElement('div');
+    let sectionMontageCardImg = document.createElement('img');
+    let sectionMontageCardIcon = document.createElement('svg');
+    let sectionMontageCardIconUse = document.createElement('use');
+    
+    let sectionMontageCardiIfoWrapper = document.createElement('div');
+    let sectionMontageCardName = document.createElement('a');
+    let sectionMontageCardPrice = document.createElement('p');
+
+
+    // Подключение
+    sectionMontageWrapperCard.appendChild(sectionMontageCard);
+    sectionMontageCard.appendChild(sectionMontageCardImg);
+    sectionMontageCard.appendChild(sectionMontageCardIcon);
+    sectionMontageCardIcon.appendChild(sectionMontageCardIconUse);
+    sectionMontageCard.appendChild(sectionMontageCardiIfoWrapper);
+
+    sectionMontageCardiIfoWrapper.appendChild(sectionMontageCardName);
+    sectionMontageCardiIfoWrapper.appendChild(sectionMontageCardPrice);
+
+    // Стили, атрибуты
+    sectionMontageCard.setAttribute('class', 'section-montage__card');
+
+    sectionMontageCardImg.setAttribute('src', currentCard.imgCard);
+    sectionMontageCardImg.setAttribute('alt', currentCard.altText);
+
+    // sectionMontageCardIconUse.setAttribute('') use!!!
+
+    sectionMontageCardiIfoWrapper.setAttribute('class', 'section-montage__info-wrapper');
+    sectionMontageCardName.setAttribute('class', 'section-montage__card-link');
+    sectionMontageCardName.setAttribute('href', currentCard.urlLink);
+    sectionMontageCardName.textContent = currentCard.textLink;
+
+    sectionMontageCardPrice.setAttribute('class', 'section-montage__price ')
+    sectionMontageCardPrice.textContent = 'от ' + currentCard.price + ' руб.';
+};
+
+// Объекты для формы
+let sectionMontageobjektForm = {
+    title: 'Расчёт стоимости установки',
+    text: 'Если всё необходимое оборудование у вас уже есть и вам нужна только установка, то наши специалисты могут приехать на замер и рассчитать стоимость работы.',
+    textBtn: 'Рассчитать стоимость'
+}
+
+let sectionMontageInputCardContainer = document.createElement('div');
+let sectionMontageInputCardWrapper= document.createElement('div');
+let sectionMontageInputCardTitle = document.createElement('h2');
+let sectionMontageInputCardText = document.createElement('p');
+let sectionMontageForm = document.createElement('form');
+let sectionMontageFormWrapperInput = document.createElement('div');
+let sectionMontageFormBtn = document.createElement('button');
+
+// Подключение 
+
+sectionMontageContainer.appendChild(sectionMontageInputCardContainer);
+sectionMontageInputCardContainer.appendChild(sectionMontageInputCardWrapper);
+sectionMontageInputCardWrapper.appendChild(sectionMontageInputCardTitle);
+sectionMontageInputCardWrapper.appendChild(sectionMontageInputCardText);
+sectionMontageInputCardWrapper.appendChild(sectionMontageForm);
+sectionMontageForm.appendChild(sectionMontageFormWrapperInput);
+sectionMontageForm.appendChild(sectionMontageFormBtn);
+
+
+
+// Атрибут, стили
+sectionMontageInputCardContainer.setAttribute('class', 'section-montage__container-input input-card');
+
+sectionMontageInputCardWrapper.setAttribute('class', 'section-montage__card-wrapper input-card__wrapper');
+
+sectionMontageInputCardTitle.setAttribute('class', 'section-montage__card-title input-card__title');
+sectionMontageInputCardTitle.textContent = sectionMontageobjektForm.title;
+
+sectionMontageInputCardText.setAttribute('class', 'section-montage__card-text input-card__text');
+sectionMontageInputCardText.textContent = sectionMontageobjektForm.text;
+
+sectionMontageForm.setAttribute('class', 'section-montage__form');
+
+sectionMontageFormWrapperInput.setAttribute('class', 'section-montage__input-wrapper input-card__input-wrapper');
+
+sectionMontageFormBtn.setAttribute('class', 'section-montage__input-button input-card__button ');
+sectionMontageFormBtn.textContent = sectionMontageobjektForm.textBtn;
+sectionMontageFormBtn.setAttribute('type', 'symbit');
+// input 
+
+let sectionMontageinput = {
+    inputName: {
+        type: 'text',
+        placeholder: 'Ваше имя'
+    },
+    inputTel: {
+        type: 'tel',
+        placeholder: 'Номер телефона',
+        pattern: '[0-9]{10}', 
+        maxlength: '15', 
+    }
+};
+
+for (let montageInputs in sectionMontageinput) {
+    let currentInput = sectionMontageinput[montageInputs];
+    
+    let sectionMontageInputWrapper = document.createElement('div');
+    let sectionMontageInput = document.createElement('input');
+    let sectionMontageValidationMessage = document.createElement('p');
+
+
+    sectionMontageFormWrapperInput.appendChild(sectionMontageInputWrapper);
+    sectionMontageInputWrapper.appendChild(sectionMontageInput);
+    
+    sectionMontageValidationMessage.setAttribute('class', 'section-montage__validation-message');
+
+    sectionMontageInput.setAttribute('class', 'section-montage__input input-card__input');
+    sectionMontageInput.setAttribute('type', currentInput.type);
+    sectionMontageInput.setAttribute('placeholder', currentInput.placeholder);
+    sectionMontageInput.setAttribute('pattern', sectionMontageinput.pattern);
+    sectionMontageInput.setAttribute('maxlength', sectionMontageinput.maxlength);
+};
+
+
+
+
 
 // Подключение секций к main 
 main.appendChild(sectionIntro);
 main.appendChild(sectionCatalog);
 main.appendChild(sectionProduction);
 main.appendChild(sectionGoods);
+main.appendChild(sectionMontage);
 
