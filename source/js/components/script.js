@@ -580,6 +580,11 @@ let objectCard = {
     }
 }
 
+// Функции 
+function formatPrice(price) {
+    return Math.floor(price).toLocaleString('ru-RU') + ' ₽';
+}
+
 // Создание карточки товаров
 
 for (let goodsCard in objectCard) {
@@ -615,7 +620,7 @@ for (let goodsCard in objectCard) {
         sectionGoodsCardWrapperPrice.setAttribute('class', 'section-goods__wrapper-price');
         
         sectionGoodsPrice.setAttribute('class', 'section-goods__card-price');
-        sectionGoodsPrice.textContent = currentCard.price + ' ₽';
+        sectionGoodsPrice.textContent = formatPrice(currentCard.price);
 
         if (currentCard.discount) {
             sectionGoodsCardWrapperIcon.setAttribute('style', 'top: 50px');
@@ -650,8 +655,8 @@ for (let goodsCard in objectCard) {
 
         let discountedPrice = currentCard.price - discountAmount;
         currentCard.price = discountedPrice;
-
-        strikethroughPrice.textContent = `${currentCard.price} ₽`;
+        
+        strikethroughPrice.textContent = formatPrice(discountedPrice);
         strikethroughPrice.setAttribute('class', 'section-goods__card-new-price');
     } 
 
@@ -828,48 +833,49 @@ sectionMontageWarrantyText.setAttribute('class', 'section-montage__warranty-text
 sectionMontageWarrantyText.textContent = 'Даём гарантию на выполненные работы — 5 лет и предоставляем сервисное обслуживание.';
 
 sectionMontageWrapperCard.setAttribute('class', 'section-montage__wrapper-card');
+
 // Объекты карточек расчета 
 
 let sectionMontageObjectCard = {
     card1: {
         imgCard: '../img/montage/stove-installation.jpg',
         altText: 'Установка печи в доме',
-        // urlLink: '#qqq',
+        urlLink: '#targetElement',
         textLink: 'Установка печи в доме',
         price: 20000
     },
     card2: {
         imgCard: '../img/montage/fireplace-installation.jpg',
         altText: 'Установка камина',
-        urlLink: '#',
+        urlLink: '#targetElement',
         textLink: 'Установка камина',
         price: 29000
     },
     card3: {
         imgCard: '../img/montage/installation-bath.jpg',
         altText: 'Установка печи в бане',
-        urlLink: '#',
+        urlLink: '#targetElement',
         textLink: 'Установка печи в бане',
         price: 25000
     },
     card4: {
         imgCard: '../img/montage/installation-boiler.jpg',
         altText: 'Установка котла',
-        urlLink: '#',
+        urlLink: '#targetElement',
         textLink: 'Установка котла',
         price: 25000
     },
     card5: {
         imgCard: '../img/montage/installation-chimney.jpg',
         altText: 'Установка дымохода',
-        urlLink: '#',
+        urlLink: '#targetElement',
         textLink: 'Установка дымохода',
         price: 22000
     },
     card6: {
         imgCard: '../img/montage/chimney-making.jpg',
         altText: 'Изготовление дымохода',
-        urlLink: '#',
+        urlLink: '#targetElement',
         textLink: 'Изготовление дымохода',
         price: 18000,
     }
@@ -898,6 +904,14 @@ for (мontageCrad in sectionMontageObjectCard) {
     sectionMontageCardiIfoWrapper.appendChild(sectionMontageCardName);
     sectionMontageCardiIfoWrapper.appendChild(sectionMontageCardPrice);
 
+    // Функции
+
+    function formatPrice(price) {
+        return 'от ' + Math.floor(price).toLocaleString('ru-RU') + ' руб.';
+    }
+    
+    // function()
+
     // Стили, атрибуты
     sectionMontageCard.setAttribute('class', 'section-montage__card');
 
@@ -907,12 +921,13 @@ for (мontageCrad in sectionMontageObjectCard) {
     // sectionMontageCardIconUse.setAttribute('') use!!!
 
     sectionMontageCardiIfoWrapper.setAttribute('class', 'section-montage__info-wrapper');
+
     sectionMontageCardName.setAttribute('class', 'section-montage__card-link');
     sectionMontageCardName.setAttribute('href', currentCard.urlLink);
     sectionMontageCardName.textContent = currentCard.textLink;
 
     sectionMontageCardPrice.setAttribute('class', 'section-montage__price ')
-    sectionMontageCardPrice.textContent = 'от ' + currentCard.price + ' руб.';
+    sectionMontageCardPrice.textContent = formatPrice(currentCard.price);
 };
 
 // Объекты для формы
@@ -946,6 +961,7 @@ sectionMontageForm.appendChild(sectionMontageFormBtn);
 sectionMontageInputCardContainer.setAttribute('class', 'section-montage__container-input input-card');
 
 sectionMontageInputCardWrapper.setAttribute('class', 'section-montage__card-wrapper input-card__wrapper');
+sectionMontageInputCardWrapper.setAttribute('id', 'targetElement');
 
 sectionMontageInputCardTitle.setAttribute('class', 'section-montage__card-title input-card__title');
 sectionMontageInputCardTitle.textContent = sectionMontageobjektForm.title;
@@ -995,7 +1011,87 @@ for (let montageInputs in sectionMontageinput) {
     sectionMontageInput.setAttribute('maxlength', sectionMontageinput.maxlength);
 };
 
+// Секция портфолио
 
+// Объекты 
+let objectPortfolio = {
+    title: 'Портфолио',
+    btnText: 'Все работы'
+}
+
+// Переменные 
+let sectionPortfolio = document.createElement('section');
+let sectionPortfolioContainer = document.createElement('div');
+let sectionPortfolioWrapper = document.createElement('div');
+let sectionPortfolioTitle = document.createElement('h2');
+let sectionPortfoWrapperCard = document.createElement('div');
+let sectionPortfolioButton = document.createElement('button');
+
+// Подключение 
+sectionPortfolio.appendChild(sectionPortfolioContainer);
+sectionPortfolioContainer.appendChild(sectionPortfolioWrapper);
+sectionPortfolioWrapper.appendChild(sectionPortfolioTitle);
+sectionPortfolioWrapper.appendChild(sectionPortfoWrapperCard);
+sectionPortfolioWrapper.appendChild(sectionPortfolioButton);
+
+
+// Стили, атрибуты
+sectionPortfolio.setAttribute('class', 'section-portfolio');
+sectionPortfolioContainer.setAttribute('class', 'section-portfolio__container');
+
+sectionPortfolioWrapper.setAttribute('class', 'section-portfolio__wrapper');
+
+sectionPortfolioTitle.setAttribute('class', 'section-portfolio__title');
+sectionPortfolioTitle.textContent = objectPortfolio.title;
+
+sectionPortfoWrapperCard.setAttribute('class', 'section-portfolio__wrapper-card')
+
+sectionPortfolioButton.setAttribute('class', 'section-portfolio__button');
+sectionPortfolioButton.textContent = objectPortfolio.btnText;
+
+// Объекты карточек портфолио 
+
+let cardsPortfolio = {
+    gards1: {
+        img: './img/portfolio/fireplace-installation.jpg',
+        alt: 'Монтаж камина «ABX Norfolk» и облицовки',
+        text: 'Монтаж камина «ABX Norfolk» и облицовки'
+    },
+    gards2: {
+        img: './img/portfolio/installation-520.jpg',
+        alt: 'Монтаж печи-камина «Jotul F 520»',
+        text: 'Монтаж печи-камина «Jotul F 520»'
+    },
+    gards3: {
+        img: './img/portfolio/fireplace-installation.jpg',
+        alt: 'Монтаж камина «ABX Norfolk» и облицовки',
+        text: 'Монтаж камина «ABX Norfolk» и облицовки'
+    }
+};
+
+for (portfolioCard in cardsPortfolio) {
+    let currentCard = cardsPortfolio[portfolioCard];
+
+    let sectionPortfolioWrapperContent = document.createElement('div');
+    let sectionPortfolioImg = document.createElement('img');
+    let sectionPortfolioText = document.createElement('p');
+
+    // Подключение 
+
+    sectionPortfoWrapperCard.appendChild(sectionPortfolioWrapperContent);
+    sectionPortfolioWrapperContent.appendChild(sectionPortfolioImg);
+    sectionPortfolioWrapperContent.appendChild(sectionPortfolioText);
+
+    // Атрибуты, стили 
+
+    sectionPortfolioWrapperContent.setAttribute('class', 'section-portfolio__wrapper-content');
+
+    sectionPortfolioImg.setAttribute('src', currentCard.img);
+    sectionPortfolioImg.setAttribute('alt', currentCard.alt);
+
+    sectionPortfolioText.setAttribute('class', 'section-portfolio__text');
+    sectionPortfolioText.textContent = currentCard.text;
+};
 
 
 
@@ -1005,4 +1101,5 @@ main.appendChild(sectionCatalog);
 main.appendChild(sectionProduction);
 main.appendChild(sectionGoods);
 main.appendChild(sectionMontage);
-
+main.appendChild(sectionPortfolio);
+// 
