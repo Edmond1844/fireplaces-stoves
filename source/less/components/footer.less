@@ -1,0 +1,49 @@
+@media (min-width: @desktop-width) {
+    .footer{
+        background-color: @dark;
+    }
+
+    .footer__container {
+        .container ();
+        display: flex;
+
+        padding: 48px 0;
+    }
+
+    // .footer__info-wrapper {
+
+    // }
+
+    .footer__info-title {
+        .footer-title ();
+
+        margin-bottom: 24px
+    }
+
+    .footer__info-wrapper-list {
+        .reset-styles-ol ();
+        padding: 0;
+        margin: 0;
+
+        & li:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    // .footer__info-item {
+    // }
+
+    .footer__info-link {
+        text-decoration: none;
+
+        color: @color-white-almost;
+    }
+
+    // .footer__contacts-wrapper {
+
+    // }
+
+    .footer__contacts-title {
+        .footer-title ();
+    }
+}

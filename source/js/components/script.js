@@ -1,4 +1,3 @@
-
 // Объекты header
 let objectNamesHeader = {
     typeBtn: 'button',
@@ -1016,7 +1015,13 @@ for (let montageInputs in sectionMontageinput) {
 // Объекты 
 let objectPortfolio = {
     title: 'Портфолио',
-    btnText: 'Все работы'
+    btnText: 'Все работы',
+    typeBtn: 'button',
+    overviewTitle: 'Интернет-магазин каминов, печей и котлов',
+    overviewImg: './img/portfolio/overview.png',
+    overviewText: 'Интернет-магазин каминов собрал самое ценное, что имеется на современном рынке. Если вы ищите надежную технику для обогрева, приготовления пищи, созерцания огня и прочих потребностей, то вам обязательно следует посетить наш сайт. Интернет-портал ПИТЕР КАМИН! располагает широчайшим ассортиментом технических приспособлений. У нас на виртуальной витрине представлены следующие категории:',
+    bottomText: 'Мы уверены, что вы обязательно отыщите желаемый тип модели.'
+
 }
 
 // Переменные 
@@ -1026,6 +1031,12 @@ let sectionPortfolioWrapper = document.createElement('div');
 let sectionPortfolioTitle = document.createElement('h2');
 let sectionPortfoWrapperCard = document.createElement('div');
 let sectionPortfolioButton = document.createElement('button');
+let sectionPortfolioShopOverview = document.createElement('div');
+let sectionPortfolioOverviewTitle = document.createElement('h3');
+let sectionPortfolioOverviewImg = document.createElement('img');
+let sectionPortfolioOverviewText = document.createElement('p');
+let sectionPortfolioOverviewList = document.createElement('ol');
+let sectionPortfolioBottomText = document.createElement('p');
 
 // Подключение 
 sectionPortfolio.appendChild(sectionPortfolioContainer);
@@ -1033,6 +1044,13 @@ sectionPortfolioContainer.appendChild(sectionPortfolioWrapper);
 sectionPortfolioWrapper.appendChild(sectionPortfolioTitle);
 sectionPortfolioWrapper.appendChild(sectionPortfoWrapperCard);
 sectionPortfolioWrapper.appendChild(sectionPortfolioButton);
+sectionPortfolioWrapper.appendChild(sectionPortfolioShopOverview);
+sectionPortfolioShopOverview.appendChild(sectionPortfolioOverviewTitle);
+sectionPortfolioShopOverview.appendChild(sectionPortfolioOverviewImg);
+sectionPortfolioShopOverview.appendChild(sectionPortfolioOverviewText);
+sectionPortfolioShopOverview.appendChild(sectionPortfolioOverviewList);
+sectionPortfolioShopOverview.appendChild(sectionPortfolioBottomText);
+
 
 
 // Стили, атрибуты
@@ -1048,6 +1066,22 @@ sectionPortfoWrapperCard.setAttribute('class', 'section-portfolio__wrapper-card'
 
 sectionPortfolioButton.setAttribute('class', 'section-portfolio__button');
 sectionPortfolioButton.textContent = objectPortfolio.btnText;
+sectionPortfolioButton.setAttribute('type', objectPortfolio.typeBtn);
+
+sectionPortfolioShopOverview.setAttribute('class', 'section-portfolio__shop-overview');
+
+sectionPortfolioOverviewTitle.setAttribute('class', 'section-portfolio__overview-title');
+sectionPortfolioOverviewTitle.textContent = objectPortfolio.overviewTitle;
+
+sectionPortfolioOverviewImg.setAttribute('src', objectPortfolio.overviewImg);
+
+sectionPortfolioOverviewText.setAttribute('class', 'section-portfolio__overview-text');
+sectionPortfolioOverviewText.textContent = objectPortfolio.overviewText;
+
+sectionPortfolioOverviewList.setAttribute('class', 'section-portfolio__overview-list');
+
+sectionPortfolioBottomText.textContent = objectPortfolio.bottomText;
+sectionPortfolioBottomText.setAttribute('class', 'section-portfolio__overview-bottom-text');
 
 // Объекты карточек портфолио 
 
@@ -1093,6 +1127,150 @@ for (portfolioCard in cardsPortfolio) {
     sectionPortfolioText.textContent = currentCard.text;
 };
 
+// Объекты спика
+
+let OverviewItems = {
+    item1: {
+        text: 'банные агрегаты',
+        textItem: 'банные агрегаты;'
+    },
+    item2: {
+        text: 'банные агрегаты',
+        textItem: 'отопительно-варочные изделия;'
+    },
+    item3: {
+        text: 'банные агрегаты',
+        textItem: 'инновационные биокамины;'
+    },
+    item4: {
+        text: 'банные агрегаты',
+        textItem: 'грили, барбекю, мангалы;'
+    },
+    item5: {
+        text: 'банные агрегаты',
+        textItem: 'электрические приборы;'
+    },
+    item6: {
+        text: 'банные агрегаты',
+        textItem: 'сопутствующие комплектующие.'
+    }
+};
+
+for (let itemOverview in OverviewItems) {
+    let currentItem = OverviewItems[itemOverview];
+
+    let sectionPortfolioOverviewItem = document.createElement('li');
+
+    // Подключение списка 
+    sectionPortfolioOverviewList.appendChild(sectionPortfolioOverviewItem);
+
+    // Атрибуты, стили 
+
+    sectionPortfolioOverviewItem.setAttribute('class', 'section-portfolio__overview-item')
+    sectionPortfolioOverviewItem.textContent = currentItem.textItem;
+}
+
+// footer
+
+// Переменные 
+
+let footer = document.createElement('footer');
+let footerContainer = document.createElement('div');
+
+let footerWrapper = document.createElement('div');
+
+let footerInfoWrapper = document.createElement('div');
+let footerInfoTitle = document.createElement('h2');
+let footerInfoWrapperList = document.createElement('ul');
+
+let footerContactsWrapper = document.createElement('div');
+let footerContactsTitle = document.createElement('h2');
+let map = document.createElement('iframe');
+
+
+// Подключение 
+
+footer.appendChild(footerContainer);
+footerContainer.appendChild(footerInfoWrapper);
+footerInfoWrapper.appendChild(footerInfoTitle);
+footerInfoWrapper.appendChild(footerInfoWrapperList);
+
+footerContainer.appendChild(footerContactsWrapper);
+footerContactsWrapper.appendChild(footerContactsTitle);
+footerContactsWrapper.appendChild(map);
+
+// Атрибуты, стили 
+
+footer.setAttribute('class', 'footer');
+footerContainer.setAttribute('class', 'footer__container');
+
+footerInfoWrapper.setAttribute('class', 'footer__info-wrapper');
+footerInfoTitle.setAttribute('class', 'footer__info-title');
+footerInfoTitle.textContent = 'Информация';
+
+footerInfoWrapperList.setAttribute('class', 'footer__info-wrapper-list');
+
+footerContactsWrapper.setAttribute('class', 'footer__contacts-wrapper');
+footerContactsTitle.setAttribute('class', 'footer__contacts-title');
+footerContactsTitle.textContent = 'Контакты';
+
+// Объекты map 
+
+let objectMap = {
+    src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4008.7635828882653!2d30.326358128221997!3d59.84279941130454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46962535dceb8eff%3A0x752f9188314eb628!2z0YPQuy4g0JvQtdC90YHQvtCy0LXRgtCwLCA0Mywg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsIDE5NjE0Mw!5e0!3m2!1sru!2sru!4v1732641585548!5m2!1sru!2sru',
+    width: 410,
+};
+
+map.setAttribute('src', objectMap.src);
+
+
+
+// объекты footer info 
+
+let objectsInfo = {
+    link1: {
+        textLink: 'О нас',
+        urlLink: '#'
+    },
+    link2: {
+        textLink: 'Доставка и оплата',
+        urlLink: '#'
+    },
+    link3: {
+        textLink: 'Производители',
+        urlLink: '#'
+    },
+    link4: {
+        textLink: 'Акции',
+        urlLink: '#'
+    },
+    link5: {
+        textLink: 'Карта сайта',
+        urlLink: '#'
+    }
+}
+
+
+// info wrapper 
+
+for (let listInfo in objectsInfo) {
+    let currentLink = objectsInfo[listInfo];
+
+    let footerInfoItem = document.createElement('li');
+    let footerInfoLink = document.createElement('a');
+
+    // Подключение списка 
+
+    footerInfoWrapperList.appendChild(footerInfoItem);
+    footerInfoItem.appendChild(footerInfoLink);
+
+    // Атрибуты, стили 
+    footerInfoItem.setAttribute('class', 'footer__info-item');
+
+    footerInfoLink.setAttribute('class', 'footer__info-link');
+    footerInfoLink.setAttribute('href', currentLink.urlLink);
+    footerInfoLink.textContent = currentLink.textLink;
+}
 
 
 // Подключение секций к main 
@@ -1102,4 +1280,5 @@ main.appendChild(sectionProduction);
 main.appendChild(sectionGoods);
 main.appendChild(sectionMontage);
 main.appendChild(sectionPortfolio);
+main.appendChild(footer);
 // 
