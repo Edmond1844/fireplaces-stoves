@@ -800,7 +800,7 @@ let sectionMontageWarrantyInfo = document.createElement('div');
 let sectionMontageIconWrapper = document.createElement('div');
 // место для use
 let sectionMontageWarrantyText = document.createElement('p');
-let sectionMontageWrapperCard = document.createElement('div');
+// let sectionMontageWrapperCard = document.createElement('div');
 
 // Подключение к section-montage 
 sectionMontage.appendChild(sectionMontageContainer);
@@ -813,7 +813,7 @@ sectionMontageWrapper.appendChild(sectionMontageWarrantyInfo);
 sectionMontageWarrantyInfo.appendChild(sectionMontageIconWrapper);
 sectionMontageWarrantyInfo.appendChild(sectionMontageWarrantyText);
 
-sectionMontageWrapper.appendChild(sectionMontageWrapperCard);
+// sectionMontageWrapper.appendChild(sectionMontageWrapperCard);
 
 // Стили классов, атрибуты section-montage 
 sectionMontage.setAttribute('class', 'section-montage');
@@ -831,103 +831,173 @@ sectionMontageIconWrapper.setAttribute('class', 'section-montage__icon-wrapper')
 sectionMontageWarrantyText.setAttribute('class', 'section-montage__warranty-text ');
 sectionMontageWarrantyText.textContent = 'Даём гарантию на выполненные работы — 5 лет и предоставляем сервисное обслуживание.';
 
-sectionMontageWrapperCard.setAttribute('class', 'section-montage__wrapper-card');
+// sectionMontageWrapperCard.setAttribute('class', 'section-montage__wrapper-card');
 
 // Объекты карточек расчета 
 
-let sectionMontageObjectCard = {
-    card1: {
-        imgCard: '../img/montage/stove-installation.jpg',
-        altText: 'Установка печи в доме',
-        urlLink: '#targetElement',
-        textLink: 'Установка печи в доме',
-        price: 20000
-    },
-    card2: {
-        imgCard: '../img/montage/fireplace-installation.jpg',
-        altText: 'Установка камина',
-        urlLink: '#targetElement',
-        textLink: 'Установка камина',
-        price: 29000
-    },
-    card3: {
-        imgCard: '../img/montage/installation-bath.jpg',
-        altText: 'Установка печи в бане',
-        urlLink: '#targetElement',
-        textLink: 'Установка печи в бане',
-        price: 25000
-    },
-    card4: {
-        imgCard: '../img/montage/installation-boiler.jpg',
-        altText: 'Установка котла',
-        urlLink: '#targetElement',
-        textLink: 'Установка котла',
-        price: 25000
-    },
-    card5: {
-        imgCard: '../img/montage/installation-chimney.jpg',
-        altText: 'Установка дымохода',
-        urlLink: '#targetElement',
-        textLink: 'Установка дымохода',
-        price: 22000
-    },
-    card6: {
-        imgCard: '../img/montage/chimney-making.jpg',
-        altText: 'Изготовление дымохода',
-        urlLink: '#targetElement',
-        textLink: 'Изготовление дымохода',
-        price: 18000,
-    }
-}
+// let sectionMontageObjectCard = {
+//     card1: {
+//         imgCard: '../img/montage/stove-installation.jpg',
+//         altText: 'Установка печи в доме',
+//         urlLink: '#targetElement',
+//         textLink: 'Установка печи в доме',
+//         price: 20000
+//     },
+//     card2: {
+//         imgCard: '../img/montage/fireplace-installation.jpg',
+//         altText: 'Установка камина',
+//         urlLink: '#targetElement',
+//         textLink: 'Установка камина',
+//         price: 29000
+//     },
+//     card3: {
+//         imgCard: '../img/montage/installation-bath.jpg',
+//         altText: 'Установка печи в бане',
+//         urlLink: '#targetElement',
+//         textLink: 'Установка печи в бане',
+//         price: 25000
+//     },
+//     card4: {
+//         imgCard: '../img/montage/installation-boiler.jpg',
+//         altText: 'Установка котла',
+//         urlLink: '#targetElement',
+//         textLink: 'Установка котла',
+//         price: 25000
+//     },
+//     card5: {
+//         imgCard: '../img/montage/installation-chimney.jpg',
+//         altText: 'Установка дымохода',
+//         urlLink: '#targetElement',
+//         textLink: 'Установка дымохода',
+//         price: 22000
+//     },
+//     card6: {
+//         imgCard: '../img/montage/chimney-making.jpg',
+//         altText: 'Изготовление дымохода',
+//         urlLink: '#targetElement',
+//         textLink: 'Изготовление дымохода',
+//         price: 18000,
+//     }
+// }
 
-for (мontageCrad in sectionMontageObjectCard) {
-    let currentCard = sectionMontageObjectCard[мontageCrad];
+// for (мontageCrad in sectionMontageObjectCard) {
+//     let currentCard = sectionMontageObjectCard[мontageCrad];
 
-    let sectionMontageCard = document.createElement('div');
-    let sectionMontageCardImg = document.createElement('img');
-    let sectionMontageCardIcon = document.createElement('svg');
-    let sectionMontageCardIconUse = document.createElement('use');
+//     let sectionMontageCard = document.createElement('div');
+//     let sectionMontageCardImg = document.createElement('img');
+//     let sectionMontageCardIcon = document.createElement('svg');
+//     let sectionMontageCardIconUse = document.createElement('use');
     
-    let sectionMontageCardiIfoWrapper = document.createElement('div');
-    let sectionMontageCardName = document.createElement('a');
-    let sectionMontageCardPrice = document.createElement('p');
+//     let sectionMontageCardiIfoWrapper = document.createElement('div');
+//     let sectionMontageCardName = document.createElement('a');
+//     let sectionMontageCardPrice = document.createElement('p');
 
 
     // Подключение
-    sectionMontageWrapperCard.appendChild(sectionMontageCard);
-    sectionMontageCard.appendChild(sectionMontageCardImg);
-    sectionMontageCard.appendChild(sectionMontageCardIcon);
-    sectionMontageCardIcon.appendChild(sectionMontageCardIconUse);
-    sectionMontageCard.appendChild(sectionMontageCardiIfoWrapper);
+    // // sectionMontageWrapperCard.appendChild(sectionMontageCard);
+    // sectionMontageCard.appendChild(sectionMontageCardImg);
 
-    sectionMontageCardiIfoWrapper.appendChild(sectionMontageCardName);
-    sectionMontageCardiIfoWrapper.appendChild(sectionMontageCardPrice);
+    // sectionMontageCardIcon.appendChild(sectionMontageCardIconUse);
+    // sectionMontageCard.appendChild(sectionMontageCardiIfoWrapper);
 
-    // Функции
+    // sectionMontageCardiIfoWrapper.appendChild(sectionMontageCardName);
+    // sectionMontageCardiIfoWrapper.appendChild(sectionMontageCardPrice);
 
-    function formatPrice(price) {
-        return 'от ' + Math.floor(price).toLocaleString('ru-RU') + ' руб.';
-    }
+    // sectionMontageCard.appendChild(sectionMontageCardIcon);
+
+    // // Функции
+
+    // function formatPrice(price) {
+    //     return 'от ' + Math.floor(price).toLocaleString('ru-RU') + ' руб.';
+    // };
     
-    // function()
-
     // Стили, атрибуты
-    sectionMontageCard.setAttribute('class', 'section-montage__card');
+//     sectionMontageCard.setAttribute('class', 'section-montage__card');
 
-    sectionMontageCardImg.setAttribute('src', currentCard.imgCard);
-    sectionMontageCardImg.setAttribute('alt', currentCard.altText);
+//     sectionMontageCardImg.setAttribute('src', currentCard.imgCard);
+//     sectionMontageCardImg.setAttribute('alt', currentCard.altText);
 
-    // sectionMontageCardIconUse.setAttribute('') use!!!
+//     // sectionMontageCardIconUse.setAttribute('') use!!!
 
-    sectionMontageCardiIfoWrapper.setAttribute('class', 'section-montage__info-wrapper');
+//     sectionMontageCardiIfoWrapper.setAttribute('class', 'section-montage__info-wrapper');
 
-    sectionMontageCardName.setAttribute('class', 'section-montage__card-link');
-    sectionMontageCardName.setAttribute('href', currentCard.urlLink);
-    sectionMontageCardName.textContent = currentCard.textLink;
+//     sectionMontageCardName.setAttribute('class', 'section-montage__card-link');
+//     sectionMontageCardName.setAttribute('href', currentCard.urlLink);
+//     sectionMontageCardName.textContent = currentCard.textLink;
 
-    sectionMontageCardPrice.setAttribute('class', 'section-montage__price ')
-    sectionMontageCardPrice.textContent = formatPrice(currentCard.price);
-};
+//     sectionMontageCardPrice.setAttribute('class', 'section-montage__price ')
+//     sectionMontageCardPrice.textContent = formatPrice(currentCard.price);
+// };
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Объекты 
+    let sectionMontageObjectCard = {
+        card1: {
+            imgCard: '../img/montage/stove-installation.jpg',
+            urlLink: '#targetElement',
+            textLink: 'Установка печи в доме',
+            price: 20000
+        },
+        card2: {
+            imgCard: '../img/montage/fireplace-installation.jpg',
+            urlLink: '#targetElement',
+            textLink: 'Установка камина',
+            price: 29000
+        },
+        card3: {
+            imgCard: '../img/montage/installation-bath.jpg',
+            urlLink: '#targetElement',
+            textLink: 'Установка печи в бане',
+            price: 25000
+        },
+        card4: {
+            imgCard: '../img/montage/installation-boiler.jpg',
+            urlLink: '#targetElement',
+            textLink: 'Установка котла',
+            price: 25000
+        },
+        card5: {
+            imgCard: '../img/montage/installation-chimney.jpg',
+            urlLink: '#targetElement',
+            textLink: 'Установка дымохода',
+            price: 22000
+        },
+        card6: {
+            imgCard: '../img/montage/chimney-making.jpg',
+            urlLink: '#targetElement',
+            textLink: 'Изготовление дымохода',
+            price: 18000,
+        }
+    };
+
+    // Переменные
+    const sectionMontageCardContainer = document.querySelector('.section-montage__wrapper-card');
+    const template = document.querySelector('.section-montage__card-template');
+
+    // Цикл
+    for (let montageCard in sectionMontageObjectCard) {
+        let currentCard = sectionMontageObjectCard[montageCard];
+
+        // Функции
+        function formatPrice(price) {
+            return 'от ' + Math.floor(price).toLocaleString('ru-RU') + ' руб.';
+        }
+        
+        const clone = template.content.cloneNode(true);
+
+        // Значения 
+        clone.querySelector('.section-montage__card-img').src = currentCard.imgCard;
+        clone.querySelector('.section-montage__card-img').alt = currentCard.textLink;
+
+        clone.querySelector('.section-montage__card-link').textContent = currentCard.textLink;
+        clone.querySelector('.section-montage__card-link').href = currentCard.urlLink;
+
+        clone.querySelector('.section-montage__price').textContent = formatPrice(currentCard.price);
+        
+        sectionMontageWrapper.appendChild(sectionMontageCardContainer);
+        sectionMontageCardContainer.appendChild(clone);
+    }
+});
 
 // Объекты для формы
 let sectionMontageobjektForm = {
