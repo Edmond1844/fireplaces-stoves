@@ -5,9 +5,15 @@
 
     .footer__container {
         .container ();
-        display: flex;
 
         padding: 48px 0;
+    }
+
+    .footer__wrapper-content {
+        display: flex;
+        justify-content: space-between;
+
+        margin-bottom: 48px;
     }
 
     // .footer__info-wrapper {
@@ -39,11 +45,145 @@
         color: @color-white-almost;
     }
 
-    // .footer__contacts-wrapper {
+    // .footer__contacts {
 
     // }
 
     .footer__contacts-title {
         .footer-title ();
+
+        margin-bottom: 24px;
+    }
+
+    .footer__contacts-text-wrapper {
+        margin-bottom: 16px;
+    }
+
+    .footer__contacts-address-title {
+        .label-text ();
+    }
+
+    .footer__contacts-wrapper {
+        display: flex;
+        column-gap: 24px;
+    }
+
+    .footer__contacts-address-store {
+        color: @color-white-almost;
+
+        margin: 0;
+
+        font-size: 16px;
+
+        line-height: 24px;
+    }
+
+    .footer__map {
+        width: 410px;
+        height: 302px;
+
+        border-radius: 28px;
+    }
+
+    .footer__contacts-links-wrapper {
+        width: 373px;
+    }
+
+    // .footer__contacts-item-wrapper {
+        
+    // }
+
+    .footer__contacts-link-name {
+        .label-text ();
+    }
+
+    .footer__contacts-link {
+        display: block;
+
+        text-decoration: none;
+
+        color: @color-white-almost;
+
+        margin: 0;
+
+        font-size: 16px;
+
+        line-height: 24px;
+    }
+
+    .footer__social-network-list {
+        .reset-styles-ol ();
+        padding: 0;
+        margin-top: 48px;
+        margin-bottom: 16px;
+
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 16px;
+        row-gap: 5px;
+    }
+
+    // .footer__social-network-item {
+
+    // }
+
+    .footer__link-social-network {
+        width: 48px;
+        height: 48px;
+
+        display: block;
+
+        border: 2px solid @brand;
+        border-radius: 28px;
+    }
+
+    .footer__socials-text {
+        color: @color-white-almost;
+
+        margin: 0;
+
+        font-size: 16px;
+        font-weight: normal;
+
+        line-height: 24px;
+    }
+
+    .footer__content-description {
+        .label-text ();
+    }
+    
+    .footer__design-author {
+        color: @color-white-almost;
+
+        margin: 0;
+
+        font-size: 16px;
+        font-weight: normal;
+
+        line-height: 24px;
+
+        text-align: center;
+    }
+
+    .footer__web-design {
+        .label-text ();
+        text-align: center;
+
+        border-bottom: 1px solid @translucentWhite;
+        padding-bottom: 73px; 
+        margin-bottom: 48px;
+    }
+
+    .footer__copyright-notice {
+        color: @color-white-almost;
+
+        margin: 0;
+
+        font-size: 16px;
+        font-weight: normal;
+
+        line-height: 24px;
+
+        text-align: center;
     }
 }

@@ -1246,33 +1246,61 @@ for (let itemOverview in OverviewItems) {
 
 let footer = document.createElement('footer');
 let footerContainer = document.createElement('div');
-
-let footerWrapper = document.createElement('div');
+let footerWrapperContent = document.createElement('div');
 
 let footerInfoWrapper = document.createElement('div');
 let footerInfoTitle = document.createElement('h2');
 let footerInfoWrapperList = document.createElement('ul');
 
-let footerContactsWrapper = document.createElement('div');
+let footerContacts = document.createElement('div');
 let footerContactsTitle = document.createElement('h2');
+let footerContactsWrapper = document.createElement('div');
+let footerContactsAddressWrapper = document.createElement('div');
+let footerContactsAddressWrapperIcon = document.createElement('div');
+// use 
+let footerContactsTextWrapper = document.createElement('div');
+let footerContactsAddressTitle = document.createElement('p');
+let footerContactsAddressStore = document.createElement('p');
+
 let map = document.createElement('iframe');
+
+let contactsLinksWrapper = document.createElement('div');
+
+let socialNetworList = document.createElement('ul');
 
 
 // Подключение 
 
 footer.appendChild(footerContainer);
-footerContainer.appendChild(footerInfoWrapper);
+footerContainer.appendChild(footerWrapperContent);
+footerWrapperContent.appendChild(footerInfoWrapper);
 footerInfoWrapper.appendChild(footerInfoTitle);
 footerInfoWrapper.appendChild(footerInfoWrapperList);
 
-footerContainer.appendChild(footerContactsWrapper);
-footerContactsWrapper.appendChild(footerContactsTitle);
-footerContactsWrapper.appendChild(map);
+footerWrapperContent.appendChild(footerContacts);
+footerContacts.appendChild(footerContactsTitle);
+footerContacts.appendChild(footerContactsWrapper);
+footerContactsWrapper.appendChild(footerContactsAddressWrapper);
 
-// Атрибуты, стили 
+footerContactsAddressWrapper.appendChild(footerContactsAddressWrapperIcon);
+footerContactsAddressWrapper.appendChild(footerContactsTextWrapper);
+footerContactsTextWrapper.appendChild(footerContactsAddressTitle);
+footerContactsTextWrapper.appendChild(footerContactsAddressStore);
+footerContactsAddressWrapper.appendChild(map);
+
+footerContactsWrapper.appendChild(contactsLinksWrapper);
+
+
+
+
+
+
+// Атрибуты, стили info
 
 footer.setAttribute('class', 'footer');
 footerContainer.setAttribute('class', 'footer__container');
+
+footerWrapperContent.setAttribute('class', 'footer__wrapper-content');
 
 footerInfoWrapper.setAttribute('class', 'footer__info-wrapper');
 footerInfoTitle.setAttribute('class', 'footer__info-title');
@@ -1280,20 +1308,24 @@ footerInfoTitle.textContent = 'Информация';
 
 footerInfoWrapperList.setAttribute('class', 'footer__info-wrapper-list');
 
-footerContactsWrapper.setAttribute('class', 'footer__contacts-wrapper');
+
+// Атрибуты, стили Contacts 
+footerContacts.setAttribute('class', 'footer__contacts');
 footerContactsTitle.setAttribute('class', 'footer__contacts-title');
 footerContactsTitle.textContent = 'Контакты';
 
-// Объекты map 
+footerContactsWrapper.setAttribute('class', 'footer__contacts-wrapper');
 
-let objectMap = {
-    src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4008.7635828882653!2d30.326358128221997!3d59.84279941130454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46962535dceb8eff%3A0x752f9188314eb628!2z0YPQuy4g0JvQtdC90YHQvtCy0LXRgtCwLCA0Mywg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsIDE5NjE0Mw!5e0!3m2!1sru!2sru!4v1732641585548!5m2!1sru!2sru',
-    width: 410,
-};
+footerContactsTextWrapper.setAttribute('class', 'footer__contacts-text-wrapper');
 
-map.setAttribute('src', objectMap.src);
+footerContactsAddressTitle.setAttribute('class', 'footer__contacts-address-title');
+footerContactsAddressTitle.textContent = 'Адрес магазина';
+footerContactsAddressStore.setAttribute('class', 'footer__contacts-address-store');
+footerContactsAddressStore.textContent = 'г. Санкт-Петербург,  ул. Ленсовета, 43';
 
+contactsLinksWrapper.setAttribute('class', 'footer__contacts-links-wrapper');
 
+socialNetworList.setAttribute('class', 'footer__social-network-list');
 
 // объекты footer info 
 
@@ -1318,8 +1350,7 @@ let objectsInfo = {
         textLink: 'Карта сайта',
         urlLink: '#'
     }
-}
-
+};
 
 // info wrapper 
 
@@ -1340,8 +1371,130 @@ for (let listInfo in objectsInfo) {
     footerInfoLink.setAttribute('class', 'footer__info-link');
     footerInfoLink.setAttribute('href', currentLink.urlLink);
     footerInfoLink.textContent = currentLink.textLink;
-}
+};
 
+// Объекты map 
+
+let objectMap = {
+    src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4008.7635828882653!2d30.326358128221997!3d59.84279941130454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46962535dceb8eff%3A0x752f9188314eb628!2z0YPQuy4g0JvQtdC90YHQvtCy0LXRgtCwLCA0Mywg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsIDE5NjE0Mw!5e0!3m2!1sru!2sru!4v1732641585548!5m2!1sru!2sru'
+};
+
+map.setAttribute('src', objectMap.src);
+map.setAttribute('class', 'footer__map');
+
+let contactsLinks = {
+    leink1: {
+        linkTitle: 'Телефон',
+        linkName: '+7 (812) 924-66-61',
+        linkUrl: 'tel:78129246661'
+    },
+    leink2: {
+        linkTitle: 'E-mail',
+        linkName: 'pechkiru@mail.ru',
+        linkUrl: 'mailto:pechkiru@mail.ru'
+    }
+};
+
+for (let ContactLink in contactsLinks) {
+    let currentLink = contactsLinks[ContactLink];
+
+    let contactsLinksIconWrapper = document.createElement('svg');
+    // use
+    let contactLinkItemWrapper = document.createElement('div');
+    let contactLinkItemName = document.createElement('p');
+    let contactLinkItem = document.createElement('a');
+
+    // Атрибуты, стили 
+    contactLinkItemWrapper.setAttribute('class', 'footer__contacts-item-wrapper');
+
+    contactLinkItemName.setAttribute('class', 'footer__contacts-link-name');
+    contactLinkItemName.textContent = currentLink.linkTitle;
+
+    contactLinkItem.setAttribute('class', 'footer__contacts-link');
+    contactLinkItem.textContent = currentLink.linkName;
+    contactLinkItem.setAttribute('href', currentLink.linkUrl);
+
+    // Подключение 
+    contactsLinksWrapper.appendChild(contactsLinksIconWrapper);
+    contactsLinksWrapper.appendChild(contactLinkItemWrapper);
+    contactLinkItemWrapper.appendChild(contactLinkItemName);
+    contactLinkItemWrapper.appendChild(contactLinkItem);
+};
+
+
+let socialNetworks = {
+    link1: {
+        linkIcon: '', 
+        linkUrl: '#',
+    },
+    link2: {
+        linkIcon: '', 
+        linkUrl: '#',
+    },
+    link3: {
+        linkIcon: '', 
+        linkUrl: '#',
+    }
+};
+
+for (let linkSocial in socialNetworks) {
+    currentLink = socialNetworks[linkSocial];
+
+    // Переменные
+    let socialNetworItem = document.createElement('li');
+    let socialNetworkLink = document.createElement('a');
+
+    // Атрибуты, стили 
+    socialNetworItem.setAttribute('class', 'footer__social-network-item');
+
+    socialNetworkLink.setAttribute('class', 'footer__link-social-network');
+    socialNetworkLink.setAttribute('href', currentLink.linkUrl);
+
+    // Подключение
+    socialNetworList.appendChild(socialNetworItem);
+    socialNetworItem.appendChild(socialNetworkLink);
+};
+
+contactsLinksWrapper.appendChild(socialNetworList);
+
+// Переменные 
+let subscribeToSocialsText = document.createElement('h3');
+let contentDescription = document.createElement('p');
+
+// Атрибуты, классы
+subscribeToSocialsText.setAttribute('class', 'footer__socials-text');
+subscribeToSocialsText.textContent = 'подписывайтесь на наши соцсети';
+
+contentDescription.setAttribute('class', 'footer__content-description');
+contentDescription.textContent = 'мы размещаем свои работы и создаём полезный контент для людей интересующиеся печами, каминами  и интерьером';
+
+
+// Подключение
+contactsLinksWrapper.appendChild(subscribeToSocialsText);
+contactsLinksWrapper.appendChild(contentDescription);
+
+// Дизайнер 
+
+// Переменные 
+let designAuthor = document.createElement('h2');
+let webDesignForEveryone = document.createElement('p');
+let copyrightNotice = document.createElement('p');
+
+// Атрибуты, стили
+designAuthor.setAttribute('class', 'footer__design-author');
+designAuthor.textContent = 'Дизайн сайта — Николай Саволюк';
+
+webDesignForEveryone.setAttribute('class', 'footer__web-design');
+webDesignForEveryone.textContent = 'дизайн и создание сайтов для людей';
+
+copyrightNotice.setAttribute('class', 'footer__copyright-notice');
+copyrightNotice.textContent = 'Печки © 2021. Все права защищены.';
+
+
+// Подключение 
+footerContainer.appendChild(designAuthor);
+footerContainer.appendChild(webDesignForEveryone);
+footerContainer.appendChild(copyrightNotice);
 
 // Подключение секций к main 
 main.appendChild(sectionIntro);
