@@ -1,3 +1,8 @@
+function bgColor(event) {
+    event.preventDefault();
+    this.classList.toggle('section-goods__button--active');
+};
+
 // Объекты header
 let objectNamesHeader = {
     typeBtn: 'button',
@@ -167,6 +172,8 @@ for (let linkItem in headerLinks) {
 
     headerNavItem.setAttribute('class', 'header__nav-item');
 
+    headerNavItem.addEventListener('click', bgColor);
+
     if (currentLink.isImportant === true) { 
         headerLink.classList.add('header--red');
     }
@@ -255,96 +262,181 @@ sectionCatalogBtn.setAttribute('type', objectCatalog.typeBtn);
 sectionCatalogBtn.textContent = objectCatalog.textBtn;
 
 
-// Объекты section-intro 
-let sectionCatalogLinks = {
-    link1: {
+// // Объекты section-intro 
+// let sectionCatalogLinks = {
+//     link1: {
+//         textLink: 'Печи-камины',
+//         urlLink: '#',
+//         linkImg: './img/catalog/stoves-fireplaces.png',
+//         width: '302',
+//         height: '286'
+//     },
+//     link2: {
+//         textLink: 'Печи',
+//         urlLink: '#',
+//         linkImg: './img/catalog/ovens.png',
+//         width: '302',
+//         height: '286'
+//     },
+//     link3: {
+//         textLink: 'Банные печи',
+//         urlLink: '#',
+//         linkImg: './img/catalog/sauna-stoves.png',
+//         width: '302',
+//         height: '286'
+//     },
+//     link4: {
+//         textLink: 'Камины',
+//         urlLink: '#',
+//         linkImg: './img/catalog/fireplaces.png',
+//         width: '302',
+//         height: '286'
+//     },
+//     link5: {
+//         textLink: 'Котлы',
+//         urlLink: '#',
+//         linkImg: './img/catalog/boilers.png',
+//         width: '237',
+//         height: '221'
+//     },
+//     link6:{
+//         textLink: 'Дымоходы',
+//         urlLink: '#',
+//         linkImg: './img/catalog/chimneys.png',
+//         width: '237',
+//         height: '221'
+//     },
+//     link7:{
+        // textLink: 'Топки',
+        // urlLink: '#',
+        // linkImg: './img/catalog/fireboxes.png',
+        // width: '237',
+        // height: '221'
+//     },
+//     link8:{
+        // textLink: 'Барбекю',
+        // urlLink: '#',
+        // linkImg: './img/catalog/b-b-q.png',
+        // width: '237',
+        // height: '221'
+//     },
+//     link9:{
+        // textLink: 'Монтаж',
+        // urlLink: '#',
+        // linkImg: './img/catalog/installation.png',
+        // width: '237',
+        // height: '221'
+//     },
+// };
+
+let sectionCatalogLinks = [
+    {
         textLink: 'Печи-камины',
         urlLink: '#',
         linkImg: './img/catalog/stoves-fireplaces.png',
         width: '302',
         height: '286'
     },
-    link2: {
+    {
         textLink: 'Печи',
         urlLink: '#',
         linkImg: './img/catalog/ovens.png',
         width: '302',
-        height: '286'
+        height: '286',
     },
-    link3: {
+    {
         textLink: 'Банные печи',
         urlLink: '#',
         linkImg: './img/catalog/sauna-stoves.png',
         width: '302',
         height: '286'
     },
-    link4: {
+    {
         textLink: 'Камины',
         urlLink: '#',
         linkImg: './img/catalog/fireplaces.png',
         width: '302',
         height: '286'
     },
-    link5: {
+    {
         textLink: 'Котлы',
         urlLink: '#',
         linkImg: './img/catalog/boilers.png',
         width: '237',
         height: '221'
     },
-    link6:{
+    {
         textLink: 'Дымоходы',
         urlLink: '#',
         linkImg: './img/catalog/chimneys.png',
         width: '237',
         height: '221'
     },
-    link7:{
+    {
         textLink: 'Топки',
         urlLink: '#',
         linkImg: './img/catalog/fireboxes.png',
         width: '237',
         height: '221'
     },
-    link8:{
+    {
         textLink: 'Барбекю',
         urlLink: '#',
         linkImg: './img/catalog/b-b-q.png',
         width: '237',
         height: '221'
     },
-    link9:{
+    {
         textLink: 'Монтаж',
         urlLink: '#',
         linkImg: './img/catalog/installation.png',
         width: '237',
         height: '221'
-    },
+    }
 
-}
+];
 
-// Создание и добавление ссылок в section-catalog
-for (let catalogLinkItem in sectionCatalogLinks) {
-    let currentLinkCatalog = sectionCatalogLinks[catalogLinkItem];
-
+sectionCatalogLinks.forEach(function(catalogLinkItem) {
     let sectionCatalogItem = document.createElement('li');
     let sectionCatalogLink = document.createElement('a');
-    
-    sectionCatalogLink.textContent = currentLinkCatalog.textLink;
-    sectionCatalogLink.setAttribute('href', currentLinkCatalog.urlLink); 
+
+    sectionCatalogLink.textContent = catalogLinkItem.textLink; 
+    sectionCatalogLink.setAttribute('href', catalogLinkItem.urlLink);
     sectionCatalogLink.setAttribute('class', 'section-catalog__link'); 
 
-    let linkCatalogImage = document.createElement('img');
-    linkCatalogImage.setAttribute('src', currentLinkCatalog.linkImg); 
-    linkCatalogImage.setAttribute('alt', currentLinkCatalog.textLink); 
-    linkCatalogImage.setAttribute('width', currentLinkCatalog.width);
-    linkCatalogImage.setAttribute('height', currentLinkCatalog.height);
+    let linkCatalogImage = document.createElement('img'); 
+    linkCatalogImage.setAttribute('src', catalogLinkItem.linkImg);
+    linkCatalogImage.setAttribute('alt', catalogLinkItem.textLink);
+    linkCatalogImage.setAttribute('width', catalogLinkItem.width);
+    linkCatalogImage.setAttribute('height', catalogLinkItem.height); 
 
     sectionCatalogLink.appendChild(linkCatalogImage);
-
-    sectionCatalogItem.appendChild(sectionCatalogLink);
+    sectionCatalogItem.appendChild(sectionCatalogLink); 
     sectionCatalogList.appendChild(sectionCatalogItem);
-}
+});
+
+// // Создание и добавление ссылок в section-catalog
+// for (let catalogLinkItem in sectionCatalogLinks) {
+//     let currentLinkCatalog = sectionCatalogLinks[catalogLinkItem];
+
+//     let sectionCatalogItem = document.createElement('li');
+//     let sectionCatalogLink = document.createElement('a');
+    
+//     sectionCatalogLink.textContent = currentLinkCatalog.textLink;
+//     sectionCatalogLink.setAttribute('href', currentLinkCatalog.urlLink); 
+//     sectionCatalogLink.setAttribute('class', 'section-catalog__link'); 
+
+//     let linkCatalogImage = document.createElement('img');
+//     linkCatalogImage.setAttribute('src', currentLinkCatalog.linkImg); 
+//     linkCatalogImage.setAttribute('alt', currentLinkCatalog.textLink); 
+//     linkCatalogImage.setAttribute('width', currentLinkCatalog.width);
+//     linkCatalogImage.setAttribute('height', currentLinkCatalog.height);
+
+//     sectionCatalogLink.appendChild(linkCatalogImage);
+
+//     sectionCatalogItem.appendChild(sectionCatalogLink);
+//     sectionCatalogList.appendChild(sectionCatalogItem);
+// }
 
 // section-production
 
@@ -525,13 +617,16 @@ for (let goodsButtonItem in goodsButtons) {
     sectionGoodsItem.appendChild(sectionGoodsBtn);
     sectionGoodsList.appendChild(sectionGoodsItem);
 
-    sectionGoodsBtn.addEventListener('click', function() {
-        let sectiongoodsButtons = document.querySelectorAll('.section-goods__button'); 
-        for (let btn of sectiongoodsButtons) {
-            btn.classList.remove('section-goods__button--active'); 
-        }
-        sectionGoodsBtn.classList.add('section-goods__button--active'); 
-    });
+    sectionGoodsBtn.addEventListener('click', bgColor);
+
+    // sectionGoodsBtn.addEventListener('click', (bgColor) {
+        
+    //     let sectiongoodsButtons = document.querySelectorAll('.section-goods__button'); 
+    //     for (let btn of sectiongoodsButtons) {
+    //         btn.classList.remove('section-goods__button--active'); 
+    //     }
+    //     sectionGoodsBtn.classList.add('section-goods__button--active'); 
+    // });
 };
 
 
@@ -1503,5 +1598,5 @@ main.appendChild(sectionProduction);
 main.appendChild(sectionGoods);
 main.appendChild(sectionMontage);
 main.appendChild(sectionPortfolio);
-main.appendChild(footer);
 // 
+document.body.appendChild(footer);
